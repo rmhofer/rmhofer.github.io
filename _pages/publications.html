@@ -1,0 +1,25 @@
+---
+layout: home
+title: Publications
+permalink: /publications/
+---
+
+Keeping this up to date as best as I can. You might find a more up to date list on my <a href="https://scholar.google.com/citations?user=9L864oYAAAAJ&hl=en">google scholar profile</a>.
+
+{% assign years = "2020, 2019, 2018, 2017" | split: ", " %}
+{% for year in years %}
+    <h3>{{ year }}</h3>
+    <hr />
+    {% assign year_int = year | plus:0 %}
+    {% for publication in site.data.publications %}
+        {% if publication.year == year_int %}
+            <p>{{ publication.apa }} &nbsp; [<a href={{ publication.pdf }}><b>pdf</b></a>]</p>
+        {% endif %}
+    {% endfor %}
+{% endfor %}
+
+<br />
+<br />
+<br />
+<br />
+<br />

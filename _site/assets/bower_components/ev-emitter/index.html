@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link href="https://fonts.googleapis.com/css?family=Merriweather:300|Raleway:400,700" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="stylesheet" href="/assets/css/gallery.css">
+
+<!-- Photo gallery imports -->
+
+
+
+
+<title>EvEmitter</title>
+<!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>EvEmitter | Matthias Hofer’s Website</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="EvEmitter" />
+<meta name="author" content="Matthias Hofer" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Personal website of Matthias Hofer, PhD candidate at MIT’s Brain and Cognitive Sciences Department." />
+<meta property="og:description" content="Personal website of Matthias Hofer, PhD candidate at MIT’s Brain and Cognitive Sciences Department." />
+<link rel="canonical" href="http://localhost:4000/assets/bower_components/ev-emitter/" />
+<meta property="og:url" content="http://localhost:4000/assets/bower_components/ev-emitter/" />
+<meta property="og:site_name" content="Matthias Hofer’s Website" />
+<script type="application/ld+json">
+{"url":"http://localhost:4000/assets/bower_components/ev-emitter/","author":{"@type":"Person","name":"Matthias Hofer"},"description":"Personal website of Matthias Hofer, PhD candidate at MIT’s Brain and Cognitive Sciences Department.","headline":"EvEmitter","@type":"WebPage","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+</head>
+
+<body>
+  <main class="container">
+    <!-- side bar -->
+    <section class="about">
+      <!-- image -->
+      <a href="/">
+        
+        <img src="/assets/img/profile1.png" alt="Matthias Hofer" />
+        
+      </a>
+      <!-- name -->
+      <h2 id="title">
+        <a href="/">Matthias Hofer</a>
+      </h2>
+      <!-- tag -->
+      <p class="tagline">Cognitive Science, MIT</p>
+      <!-- navigation --><nav class="navigation">
+        <ul>
+          
+          <li>
+            <a href="/">Home</a>
+          </li>
+          
+          <li>
+            <a href="/research">Research</a>
+          </li>
+          
+          <li>
+            <a href="/publications">Publications</a>
+          </li>
+          
+          <li>
+            <a href="/photography">Miscellanea</a>
+          </li>
+          
+        </ul>
+      </nav><!-- social -->
+      <ul class="social"><a href="https://github.com/rmhofer" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a><a href="https://twitter.com/MatthiasRHofer" target="_blank">
+          <li>
+            <i class="icon-twitter-squared"></i>
+          </li>
+        </a></ul>
+      <!-- date -->
+      <p>&copy;
+        2020</p></section>
+    <!-- content -->
+    <section class="content">
+      <div class="post-container">
+    <div class="post">
+        <h1 id="evemitter">EvEmitter</h1>
+
+<p><em>Lil’ event emitter</em> — add a little pub/sub</p>
+
+<p>EvEmitter adds publish/subscribe pattern to a browser class. It’s a smaller version of <a href="https://github.com/Olical/EventEmitter">Olical/EventEmitter</a>. That EventEmitter is full featured, widely used, and great. This EvEmitter has just the base event functionality to power the event API in libraries like <a href="http://isotope.metafizzy.co">Isotope</a>, <a href="http://flickity.metafizzy.co">Flickity</a>, <a href="http://masonry.desandro.com">Masonry</a>, and <a href="http://imagesloaded.desandro.com">imagesLoaded</a>.</p>
+
+<h2 id="api">API</h2>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Inherit prototype, IE8+</span>
+<span class="nx">MyClass</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">EvEmitter</span><span class="p">();</span>
+
+<span class="c1">// Inherit prototype, IE9+</span>
+<span class="nx">MyClass</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span> <span class="nx">EvEmitter</span><span class="p">.</span><span class="nx">prototype</span> <span class="p">);</span>
+
+<span class="c1">// Mixin prototype</span>
+<span class="nx">_</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span> <span class="nx">MyClass</span><span class="p">.</span><span class="nx">prototype</span><span class="p">,</span> <span class="nx">EvEmitter</span><span class="p">.</span><span class="nx">prototype</span> <span class="p">);</span>
+
+<span class="c1">// single instance</span>
+<span class="kd">var</span> <span class="nx">emitter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">EvEmitter</span><span class="p">();</span>
+</code></pre></div></div>
+
+<h3 id="on">on</h3>
+
+<p>Add an event listener.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">emitter</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span> <span class="nx">eventName</span><span class="p">,</span> <span class="nx">listener</span> <span class="p">)</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">eventName</code> - <em>String</em> - name of the event</li>
+  <li><code class="language-plaintext highlighter-rouge">listener</code> - <em>Function</em></li>
+</ul>
+
+<h3 id="off">off</h3>
+
+<p>Remove an event listener.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">emitter</span><span class="p">.</span><span class="nx">off</span><span class="p">(</span> <span class="nx">eventName</span><span class="p">,</span> <span class="nx">listener</span> <span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="once">once</h3>
+
+<p>Add an event listener to be triggered only once.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">emitter</span><span class="p">.</span><span class="nx">once</span><span class="p">(</span> <span class="nx">eventName</span><span class="p">,</span> <span class="nx">listener</span> <span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="emitevent">emitEvent</h3>
+
+<p>Trigger an event.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">emitter</span><span class="p">.</span><span class="nx">emitEvent</span><span class="p">(</span> <span class="nx">eventName</span><span class="p">,</span> <span class="nx">args</span> <span class="p">)</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">eventName</code> - <em>String</em> - name of the event</li>
+  <li><code class="language-plaintext highlighter-rouge">args</code> - <em>Array</em> - arguments passed to listeners</li>
+</ul>
+
+<h3 id="alloff">allOff</h3>
+
+<p>Removes all event listeners.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">emitter</span><span class="p">.</span><span class="nx">allOff</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h2 id="code-example">Code example</h2>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// create event emitter</span>
+<span class="kd">var</span> <span class="nx">emitter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">EventEmitter</span><span class="p">();</span>
+
+<span class="c1">// listeners</span>
+<span class="kd">function</span> <span class="nx">hey</span><span class="p">(</span> <span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">c</span> <span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="dl">'</span><span class="s1">Hey</span><span class="dl">'</span><span class="p">,</span> <span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">c</span> <span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">ho</span><span class="p">(</span> <span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">c</span> <span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="dl">'</span><span class="s1">Ho</span><span class="dl">'</span><span class="p">,</span> <span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">c</span> <span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">letsGo</span><span class="p">(</span> <span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">c</span> <span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="dl">'</span><span class="s1">Lets go</span><span class="dl">'</span><span class="p">,</span> <span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">c</span> <span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">// bind listeners</span>
+<span class="nx">emitter</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span> <span class="dl">'</span><span class="s1">rock</span><span class="dl">'</span><span class="p">,</span> <span class="nx">hey</span> <span class="p">)</span>
+<span class="nx">emitter</span><span class="p">.</span><span class="nx">once</span><span class="p">(</span> <span class="dl">'</span><span class="s1">rock</span><span class="dl">'</span><span class="p">,</span> <span class="nx">ho</span> <span class="p">)</span>
+<span class="c1">// trigger letsGo once</span>
+<span class="nx">emitter</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span> <span class="dl">'</span><span class="s1">rock</span><span class="dl">'</span><span class="p">,</span> <span class="nx">letsGo</span> <span class="p">)</span>
+
+<span class="c1">// emit event</span>
+<span class="nx">emitter</span><span class="p">.</span><span class="nx">emitEvent</span><span class="p">(</span> <span class="dl">'</span><span class="s1">rock</span><span class="dl">'</span><span class="p">,</span> <span class="p">[</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="p">]</span> <span class="p">)</span>
+<span class="c1">// =&gt; 'Hey', 1, 2, 3</span>
+<span class="c1">// =&gt; 'Ho', 1, 2, 3</span>
+<span class="c1">// =&gt; 'Lets go', 1, 2, 3</span>
+
+<span class="c1">// unbind</span>
+<span class="nx">emitter</span><span class="p">.</span><span class="nx">off</span><span class="p">(</span> <span class="dl">'</span><span class="s1">rock</span><span class="dl">'</span><span class="p">,</span> <span class="nx">ho</span> <span class="p">)</span>
+
+<span class="nx">emitter</span><span class="p">.</span><span class="nx">emitEvent</span><span class="p">(</span> <span class="dl">'</span><span class="s1">rock</span><span class="dl">'</span><span class="p">,</span> <span class="p">[</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span> <span class="p">]</span> <span class="p">)</span>
+<span class="c1">// =&gt; 'Hey' 4, 5, 6</span>
+</code></pre></div></div>
+
+<h2 id="license">License</h2>
+
+<p>EvEmitter is released under the <a href="http://desandro.mit-license.org/">MIT License</a>. Have at it.</p>
+
+    </div>
+</div>
+    </section>
+  </main>
+</body>
+
+</html>

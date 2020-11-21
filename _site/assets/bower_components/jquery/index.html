@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link href="https://fonts.googleapis.com/css?family=Merriweather:300|Raleway:400,700" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="stylesheet" href="/assets/css/gallery.css">
+
+<!-- Photo gallery imports -->
+
+
+
+
+<title>jQuery</title>
+<!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>jQuery | Matthias Hofer’s Website</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="jQuery" />
+<meta name="author" content="Matthias Hofer" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Personal website of Matthias Hofer, PhD candidate at MIT’s Brain and Cognitive Sciences Department." />
+<meta property="og:description" content="Personal website of Matthias Hofer, PhD candidate at MIT’s Brain and Cognitive Sciences Department." />
+<link rel="canonical" href="http://localhost:4000/assets/bower_components/jquery/" />
+<meta property="og:url" content="http://localhost:4000/assets/bower_components/jquery/" />
+<meta property="og:site_name" content="Matthias Hofer’s Website" />
+<script type="application/ld+json">
+{"url":"http://localhost:4000/assets/bower_components/jquery/","author":{"@type":"Person","name":"Matthias Hofer"},"description":"Personal website of Matthias Hofer, PhD candidate at MIT’s Brain and Cognitive Sciences Department.","headline":"jQuery","@type":"WebPage","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+</head>
+
+<body>
+  <main class="container">
+    <!-- side bar -->
+    <section class="about">
+      <!-- image -->
+      <a href="/">
+        
+        <img src="/assets/img/profile1.png" alt="Matthias Hofer" />
+        
+      </a>
+      <!-- name -->
+      <h2 id="title">
+        <a href="/">Matthias Hofer</a>
+      </h2>
+      <!-- tag -->
+      <p class="tagline">Cognitive Science, MIT</p>
+      <!-- navigation --><nav class="navigation">
+        <ul>
+          
+          <li>
+            <a href="/">Home</a>
+          </li>
+          
+          <li>
+            <a href="/research">Research</a>
+          </li>
+          
+          <li>
+            <a href="/publications">Publications</a>
+          </li>
+          
+          <li>
+            <a href="/photography">Miscellanea</a>
+          </li>
+          
+        </ul>
+      </nav><!-- social -->
+      <ul class="social"><a href="https://github.com/rmhofer" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a><a href="https://twitter.com/MatthiasRHofer" target="_blank">
+          <li>
+            <i class="icon-twitter-squared"></i>
+          </li>
+        </a></ul>
+      <!-- date -->
+      <p>&copy;
+        2020</p></section>
+    <!-- content -->
+    <section class="content">
+      <div class="post-container">
+    <div class="post">
+        <h1 id="jquery">jQuery</h1>
+
+<blockquote>
+  <p>jQuery is a fast, small, and feature-rich JavaScript library.</p>
+</blockquote>
+
+<p>For information on how to get started and how to use jQuery, please see <a href="https://api.jquery.com/">jQuery’s documentation</a>.
+For source files and issues, please visit the <a href="https://github.com/jquery/jquery">jQuery repo</a>.</p>
+
+<p>If upgrading, please see the <a href="https://blog.jquery.com/2020/05/04/jquery-3-5-1-released-fixing-a-regression/">blog post for 3.5.1</a>. This includes notable differences from the previous version and a more readable changelog.</p>
+
+<h2 id="including-jquery">Including jQuery</h2>
+
+<p>Below are some of the most common ways to include jQuery.</p>
+
+<h3 id="browser">Browser</h3>
+
+<h4 id="script-tag">Script tag</h4>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://code.jquery.com/jquery-3.5.1.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<h4 id="babel">Babel</h4>
+
+<p><a href="https://babeljs.io/">Babel</a> is a next generation JavaScript compiler. One of the features is the ability to use ES6/ES2015 modules now, even though browsers do not yet support this feature natively.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">$</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">jquery</span><span class="dl">"</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h4 id="browserifywebpack">Browserify/Webpack</h4>
+
+<p>There are several ways to use <a href="http://browserify.org/">Browserify</a> and <a href="https://webpack.github.io/">Webpack</a>. For more information on using these tools, please refer to the corresponding project’s documentation. In the script, including jQuery will usually look like this…</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">$</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span> <span class="dl">"</span><span class="s2">jquery</span><span class="dl">"</span> <span class="p">);</span>
+</code></pre></div></div>
+
+<h4 id="amd-asynchronous-module-definition">AMD (Asynchronous Module Definition)</h4>
+
+<p>AMD is a module format built for the browser. For more information, we recommend <a href="https://requirejs.org/docs/whyamd.html">require.js’ documentation</a>.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">define</span><span class="p">(</span> <span class="p">[</span> <span class="dl">"</span><span class="s2">jquery</span><span class="dl">"</span> <span class="p">],</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">$</span> <span class="p">)</span> <span class="p">{</span>
+
+<span class="p">}</span> <span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="node">Node</h3>
+
+<p>To include jQuery in <a href="https://nodejs.org/">Node</a>, first install with npm.</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install </span>jquery
+</code></pre></div></div>
+
+<p>For jQuery to work in Node, a window with a document is required. Since no such window exists natively in Node, one can be mocked by tools such as <a href="https://github.com/jsdom/jsdom">jsdom</a>. This can be useful for testing purposes.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">JSDOM</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span> <span class="dl">"</span><span class="s2">jsdom</span><span class="dl">"</span> <span class="p">);</span>
+<span class="kd">const</span> <span class="p">{</span> <span class="nb">window</span> <span class="p">}</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">JSDOM</span><span class="p">(</span> <span class="dl">""</span> <span class="p">);</span>
+<span class="kd">const</span> <span class="nx">$</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span> <span class="dl">"</span><span class="s2">jquery</span><span class="dl">"</span> <span class="p">)(</span> <span class="nb">window</span> <span class="p">);</span>
+</code></pre></div></div>
+
+    </div>
+</div>
+    </section>
+  </main>
+</body>
+
+</html>

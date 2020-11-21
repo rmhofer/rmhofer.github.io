@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link href="https://fonts.googleapis.com/css?family=Merriweather:300|Raleway:400,700" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="stylesheet" href="/assets/css/gallery.css">
+
+<!-- Photo gallery imports -->
+
+
+
+
+<title>imagesLoaded</title>
+<!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>imagesLoaded | Matthias Hofer’s Website</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="imagesLoaded" />
+<meta name="author" content="Matthias Hofer" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Personal website of Matthias Hofer, PhD candidate at MIT’s Brain and Cognitive Sciences Department." />
+<meta property="og:description" content="Personal website of Matthias Hofer, PhD candidate at MIT’s Brain and Cognitive Sciences Department." />
+<link rel="canonical" href="http://localhost:4000/assets/bower_components/imagesloaded/" />
+<meta property="og:url" content="http://localhost:4000/assets/bower_components/imagesloaded/" />
+<meta property="og:site_name" content="Matthias Hofer’s Website" />
+<script type="application/ld+json">
+{"url":"http://localhost:4000/assets/bower_components/imagesloaded/","author":{"@type":"Person","name":"Matthias Hofer"},"description":"Personal website of Matthias Hofer, PhD candidate at MIT’s Brain and Cognitive Sciences Department.","headline":"imagesLoaded","@type":"WebPage","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+</head>
+
+<body>
+  <main class="container">
+    <!-- side bar -->
+    <section class="about">
+      <!-- image -->
+      <a href="/">
+        
+        <img src="/assets/img/profile1.png" alt="Matthias Hofer" />
+        
+      </a>
+      <!-- name -->
+      <h2 id="title">
+        <a href="/">Matthias Hofer</a>
+      </h2>
+      <!-- tag -->
+      <p class="tagline">Cognitive Science, MIT</p>
+      <!-- navigation --><nav class="navigation">
+        <ul>
+          
+          <li>
+            <a href="/">Home</a>
+          </li>
+          
+          <li>
+            <a href="/research">Research</a>
+          </li>
+          
+          <li>
+            <a href="/publications">Publications</a>
+          </li>
+          
+          <li>
+            <a href="/photography">Miscellanea</a>
+          </li>
+          
+        </ul>
+      </nav><!-- social -->
+      <ul class="social"><a href="https://github.com/rmhofer" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a><a href="https://twitter.com/MatthiasRHofer" target="_blank">
+          <li>
+            <i class="icon-twitter-squared"></i>
+          </li>
+        </a></ul>
+      <!-- date -->
+      <p>&copy;
+        2020</p></section>
+    <!-- content -->
+    <section class="content">
+      <div class="post-container">
+    <div class="post">
+        <h1 id="imagesloaded">imagesLoaded</h1>
+
+<p class="tagline">JavaScript is all like "You images done yet or what?"</p>
+
+<p><a href="http://imagesloaded.desandro.com">imagesloaded.desandro.com</a></p>
+
+<p>Detect when images have been loaded.</p>
+
+<h2 id="install">Install</h2>
+
+<h3 id="download">Download</h3>
+
+<ul>
+  <li><a href="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js">imagesloaded.pkgd.min.js</a> minified</li>
+  <li><a href="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.js">imagesloaded.pkgd.js</a> un-minified</li>
+</ul>
+
+<h3 id="cdn">CDN</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="c">&lt;!-- or --&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<h3 id="package-managers">Package managers</h3>
+
+<p>Install via <a href="https://www.npmjs.com/package/imagesloaded">npm</a>: <code class="language-plaintext highlighter-rouge">npm install imagesloaded</code></p>
+
+<p>Install via <a href="http://bower.io">Bower</a>: <code class="language-plaintext highlighter-rouge">bower install imagesloaded --save</code></p>
+
+<h2 id="jquery">jQuery</h2>
+
+<p>You can use imagesLoaded as a jQuery Plugin.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#container</span><span class="dl">'</span><span class="p">).</span><span class="nx">imagesLoaded</span><span class="p">(</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// images have loaded</span>
+<span class="p">});</span>
+
+<span class="c1">// options</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#container</span><span class="dl">'</span><span class="p">).</span><span class="nx">imagesLoaded</span><span class="p">(</span> <span class="p">{</span>
+  <span class="c1">// options...</span>
+  <span class="p">},</span>
+  <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// images have loaded</span>
+  <span class="p">}</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">.imagesLoaded()</code> returns a <a href="http://api.jquery.com/category/deferred-object/">jQuery Deferred object</a>. This allows you to use <code class="language-plaintext highlighter-rouge">.always()</code>, <code class="language-plaintext highlighter-rouge">.done()</code>, <code class="language-plaintext highlighter-rouge">.fail()</code> and <code class="language-plaintext highlighter-rouge">.progress()</code>.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#container</span><span class="dl">'</span><span class="p">).</span><span class="nx">imagesLoaded</span><span class="p">()</span>
+  <span class="p">.</span><span class="nx">always</span><span class="p">(</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">instance</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">all images loaded</span><span class="dl">'</span><span class="p">);</span>
+  <span class="p">})</span>
+  <span class="p">.</span><span class="nx">done</span><span class="p">(</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">instance</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">all images successfully loaded</span><span class="dl">'</span><span class="p">);</span>
+  <span class="p">})</span>
+  <span class="p">.</span><span class="nx">fail</span><span class="p">(</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">all images loaded, at least one is broken</span><span class="dl">'</span><span class="p">);</span>
+  <span class="p">})</span>
+  <span class="p">.</span><span class="nx">progress</span><span class="p">(</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">instance</span><span class="p">,</span> <span class="nx">image</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">image</span><span class="p">.</span><span class="nx">isLoaded</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">loaded</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">broken</span><span class="dl">'</span><span class="p">;</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="dl">'</span><span class="s1">image is </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">result</span> <span class="o">+</span> <span class="dl">'</span><span class="s1"> for </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">image</span><span class="p">.</span><span class="nx">img</span><span class="p">.</span><span class="nx">src</span> <span class="p">);</span>
+  <span class="p">});</span>
+</code></pre></div></div>
+
+<h2 id="vanilla-javascript">Vanilla JavaScript</h2>
+
+<p>You can use imagesLoaded with vanilla JS.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">imagesLoaded</span><span class="p">(</span> <span class="nx">elem</span><span class="p">,</span> <span class="nx">callback</span> <span class="p">)</span>
+<span class="c1">// options</span>
+<span class="nx">imagesLoaded</span><span class="p">(</span> <span class="nx">elem</span><span class="p">,</span> <span class="nx">options</span><span class="p">,</span> <span class="nx">callback</span> <span class="p">)</span>
+<span class="c1">// you can use `new` if you like</span>
+<span class="k">new</span> <span class="nx">imagesLoaded</span><span class="p">(</span> <span class="nx">elem</span><span class="p">,</span> <span class="nx">callback</span> <span class="p">)</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">elem</code> <em>Element, NodeList, Array, or Selector String</em></li>
+  <li><code class="language-plaintext highlighter-rouge">options</code> <em>Object</em></li>
+  <li><code class="language-plaintext highlighter-rouge">callback</code> <em>Function</em> - function triggered after all images have been loaded</li>
+</ul>
+
+<p>Using a callback function is the same as binding it to the <code class="language-plaintext highlighter-rouge">always</code> event (see below).</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// element</span>
+<span class="nx">imagesLoaded</span><span class="p">(</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">#container</span><span class="dl">'</span><span class="p">),</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">instance</span> <span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">all images are loaded</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">});</span>
+<span class="c1">// selector string</span>
+<span class="nx">imagesLoaded</span><span class="p">(</span> <span class="dl">'</span><span class="s1">#container</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{...});</span>
+<span class="c1">// multiple elements</span>
+<span class="kd">var</span> <span class="nx">posts</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">'</span><span class="s1">.post</span><span class="dl">'</span><span class="p">);</span>
+<span class="nx">imagesLoaded</span><span class="p">(</span> <span class="nx">posts</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{...});</span>
+</code></pre></div></div>
+
+<p>Bind events with vanilla JS with .on(), .off(), and .once() methods.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">imgLoad</span> <span class="o">=</span> <span class="nx">imagesLoaded</span><span class="p">(</span> <span class="nx">elem</span> <span class="p">);</span>
+<span class="kd">function</span> <span class="nx">onAlways</span><span class="p">(</span> <span class="nx">instance</span> <span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">all images are loaded</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="c1">// bind with .on()</span>
+<span class="nx">imgLoad</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span> <span class="dl">'</span><span class="s1">always</span><span class="dl">'</span><span class="p">,</span> <span class="nx">onAlways</span> <span class="p">);</span>
+<span class="c1">// unbind with .off()</span>
+<span class="nx">imgLoad</span><span class="p">.</span><span class="nx">off</span><span class="p">(</span> <span class="dl">'</span><span class="s1">always</span><span class="dl">'</span><span class="p">,</span> <span class="nx">onAlways</span> <span class="p">);</span>
+</code></pre></div></div>
+
+<h2 id="background">Background</h2>
+
+<p>Detect when background images have loaded, in addition to <code class="language-plaintext highlighter-rouge">&lt;img&gt;</code>s.</p>
+
+<p>Set <code class="language-plaintext highlighter-rouge">{ background: true }</code> to detect when the element’s background image has loaded.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// jQuery</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#container</span><span class="dl">'</span><span class="p">).</span><span class="nx">imagesLoaded</span><span class="p">(</span> <span class="p">{</span> <span class="na">background</span><span class="p">:</span> <span class="kc">true</span> <span class="p">},</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">#container background image loaded</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="c1">// vanilla JS</span>
+<span class="nx">imagesLoaded</span><span class="p">(</span> <span class="dl">'</span><span class="s1">#container</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">background</span><span class="p">:</span> <span class="kc">true</span> <span class="p">},</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">#container background image loaded</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p><a href="http://codepen.io/desandro/pen/pjVMPB">See jQuery demo</a> or <a href="http://codepen.io/desandro/pen/avKooW">vanilla JS demo</a> on CodePen.</p>
+
+<p>Set to a selector string like <code class="language-plaintext highlighter-rouge">{ background: '.item' }</code> to detect when the background images of child elements have loaded.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// jQuery</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#container</span><span class="dl">'</span><span class="p">).</span><span class="nx">imagesLoaded</span><span class="p">(</span> <span class="p">{</span> <span class="na">background</span><span class="p">:</span> <span class="dl">'</span><span class="s1">.item</span><span class="dl">'</span> <span class="p">},</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">all .item background images loaded</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="c1">// vanilla JS</span>
+<span class="nx">imagesLoaded</span><span class="p">(</span> <span class="dl">'</span><span class="s1">#container</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">background</span><span class="p">:</span> <span class="dl">'</span><span class="s1">.item</span><span class="dl">'</span> <span class="p">},</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">all .item background images loaded</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p><a href="http://codepen.io/desandro/pen/avKoZL">See jQuery demo</a> or <a href="http://codepen.io/desandro/pen/vNrBGz">vanilla JS demo</a> on CodePen.</p>
+
+<h2 id="events">Events</h2>
+
+<h3 id="always">always</h3>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// jQuery</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#container</span><span class="dl">'</span><span class="p">).</span><span class="nx">imagesLoaded</span><span class="p">().</span><span class="nx">always</span><span class="p">(</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">instance</span> <span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">ALWAYS - all images have been loaded</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="c1">// vanilla JS</span>
+<span class="nx">imgLoad</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span> <span class="dl">'</span><span class="s1">always</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">instance</span> <span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">ALWAYS - all images have been loaded</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>Triggered after all images have been either loaded or confirmed broken.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">instance</code> <em>imagesLoaded</em> - the imagesLoaded instance</li>
+</ul>
+
+<h3 id="done">done</h3>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// jQuery</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#container</span><span class="dl">'</span><span class="p">).</span><span class="nx">imagesLoaded</span><span class="p">().</span><span class="nx">done</span><span class="p">(</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">instance</span> <span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">DONE  - all images have been successfully loaded</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="c1">// vanilla JS</span>
+<span class="nx">imgLoad</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span> <span class="dl">'</span><span class="s1">done</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">instance</span> <span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">DONE  - all images have been successfully loaded</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>Triggered after all images have successfully loaded without any broken images.</p>
+
+<h3 id="fail">fail</h3>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#container</span><span class="dl">'</span><span class="p">).</span><span class="nx">imagesLoaded</span><span class="p">().</span><span class="nx">fail</span><span class="p">(</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">instance</span> <span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">FAIL - all images loaded, at least one is broken</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="c1">// vanilla JS</span>
+<span class="nx">imgLoad</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span> <span class="dl">'</span><span class="s1">fail</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">instance</span> <span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">FAIL - all images loaded, at least one is broken</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>Triggered after all images have been loaded with at least one broken image.</p>
+
+<h3 id="progress">progress</h3>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">imgLoad</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span> <span class="dl">'</span><span class="s1">progress</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">instance</span><span class="p">,</span> <span class="nx">image</span> <span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">image</span><span class="p">.</span><span class="nx">isLoaded</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">loaded</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">broken</span><span class="dl">'</span><span class="p">;</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="dl">'</span><span class="s1">image is </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">result</span> <span class="o">+</span> <span class="dl">'</span><span class="s1"> for </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">image</span><span class="p">.</span><span class="nx">img</span><span class="p">.</span><span class="nx">src</span> <span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>Triggered after each image has been loaded.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">instance</code> <em>imagesLoaded</em> - the imagesLoaded instance</li>
+  <li><code class="language-plaintext highlighter-rouge">image</code> <em>LoadingImage</em> - the LoadingImage instance of the loaded image</li>
+</ul>
+
+<!-- sponsored -->
+
+<h2 id="properties">Properties</h2>
+
+<h3 id="loadingimageimg">LoadingImage.img</h3>
+
+<p><em>Image</em> - The <code class="language-plaintext highlighter-rouge">img</code> element</p>
+
+<h3 id="loadingimageisloaded">LoadingImage.isLoaded</h3>
+
+<p><em>Boolean</em> - <code class="language-plaintext highlighter-rouge">true</code> when the image has successfully loaded</p>
+
+<h3 id="imagesloadedimages">imagesLoaded.images</h3>
+
+<p>Array of <em>LoadingImage</em> instances for each image detected</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">imgLoad</span> <span class="o">=</span> <span class="nx">imagesLoaded</span><span class="p">(</span><span class="dl">'</span><span class="s1">#container</span><span class="dl">'</span><span class="p">);</span>
+<span class="nx">imgLoad</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span> <span class="dl">'</span><span class="s1">always</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="nx">imgLoad</span><span class="p">.</span><span class="nx">images</span><span class="p">.</span><span class="nx">length</span> <span class="o">+</span> <span class="dl">'</span><span class="s1"> images loaded</span><span class="dl">'</span> <span class="p">);</span>
+  <span class="c1">// detect which image is broken</span>
+  <span class="k">for</span> <span class="p">(</span> <span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">len</span> <span class="o">=</span> <span class="nx">imgLoad</span><span class="p">.</span><span class="nx">images</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">len</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">image</span> <span class="o">=</span> <span class="nx">imgLoad</span><span class="p">.</span><span class="nx">images</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+    <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">image</span><span class="p">.</span><span class="nx">isLoaded</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">loaded</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">broken</span><span class="dl">'</span><span class="p">;</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="dl">'</span><span class="s1">image is </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">result</span> <span class="o">+</span> <span class="dl">'</span><span class="s1"> for </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">image</span><span class="p">.</span><span class="nx">img</span><span class="p">.</span><span class="nx">src</span> <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<h2 id="browserify">Browserify</h2>
+
+<p>imagesLoaded works with <a href="http://browserify.org/">Browserify</a>.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install </span>imagesloaded <span class="nt">--save</span>
+</code></pre></div></div>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">imagesLoaded</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">imagesloaded</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="nx">imagesLoaded</span><span class="p">(</span> <span class="nx">elem</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{...}</span> <span class="p">);</span>
+</code></pre></div></div>
+
+<p>Use <code class="language-plaintext highlighter-rouge">.makeJQueryPlugin</code> to make to use <code class="language-plaintext highlighter-rouge">.imagesLoaded()</code> jQuery plugin.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">$</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">jquery</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">imagesLoaded</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">imagesloaded</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="c1">// provide jQuery argument</span>
+<span class="nx">imagesLoaded</span><span class="p">.</span><span class="nx">makeJQueryPlugin</span><span class="p">(</span> <span class="nx">$</span> <span class="p">);</span>
+<span class="c1">// now use .imagesLoaded() jQuery plugin</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#container</span><span class="dl">'</span><span class="p">).</span><span class="nx">imagesLoaded</span><span class="p">(</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{...});</span>
+</code></pre></div></div>
+
+<h2 id="webpack">Webpack</h2>
+
+<p>Install imagesLoaded with npm.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install </span>imagesloaded
+</code></pre></div></div>
+
+<p>You can then <code class="language-plaintext highlighter-rouge">require('imagesloaded')</code>.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// main.js</span>
+<span class="kd">var</span> <span class="nx">imagesLoaded</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">imagesloaded</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="nx">imagesLoaded</span><span class="p">(</span> <span class="dl">'</span><span class="s1">#container</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// images have loaded</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>Use <code class="language-plaintext highlighter-rouge">.makeJQueryPlugin</code> to make <code class="language-plaintext highlighter-rouge">.imagesLoaded()</code> jQuery plugin.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// main.js</span>
+<span class="kd">var</span> <span class="nx">imagesLoaded</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">imagesloaded</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">$</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">jquery</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="c1">// provide jQuery argument</span>
+<span class="nx">imagesLoaded</span><span class="p">.</span><span class="nx">makeJQueryPlugin</span><span class="p">(</span> <span class="nx">$</span> <span class="p">);</span>
+<span class="c1">// now use .imagesLoaded() jQuery plugin</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#container</span><span class="dl">'</span><span class="p">).</span><span class="nx">imagesLoaded</span><span class="p">(</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{...});</span>
+</code></pre></div></div>
+
+<p>Run webpack.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>webpack main.js bundle.js
+</code></pre></div></div>
+
+<h2 id="requirejs">RequireJS</h2>
+
+<p>imagesLoaded works with <a href="http://requirejs.org">RequireJS</a>.</p>
+
+<p>You can require <a href="http://imagesloaded.desandro.com/imagesloaded.pkgd.js">imagesloaded.pkgd.js</a>.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">requirejs</span><span class="p">(</span> <span class="p">[</span>
+  <span class="dl">'</span><span class="s1">path/to/imagesloaded.pkgd.js</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">],</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">imagesLoaded</span> <span class="p">)</span> <span class="p">{</span>
+  <span class="nx">imagesLoaded</span><span class="p">(</span> <span class="dl">'</span><span class="s1">#container</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="p">...</span> <span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>Use <code class="language-plaintext highlighter-rouge">.makeJQueryPlugin</code> to make <code class="language-plaintext highlighter-rouge">.imagesLoaded()</code> jQuery plugin.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">requirejs</span><span class="p">(</span> <span class="p">[</span>
+  <span class="dl">'</span><span class="s1">jquery</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">path/to/imagesloaded.pkgd.js</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">],</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">$</span><span class="p">,</span> <span class="nx">imagesLoaded</span> <span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// provide jQuery argument</span>
+  <span class="nx">imagesLoaded</span><span class="p">.</span><span class="nx">makeJQueryPlugin</span><span class="p">(</span> <span class="nx">$</span> <span class="p">);</span>
+  <span class="c1">// now use .imagesLoaded() jQuery plugin</span>
+  <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#container</span><span class="dl">'</span><span class="p">).</span><span class="nx">imagesLoaded</span><span class="p">(</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{...});</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>You can manage dependencies with <a href="http://bower.io">Bower</a>. Set <code class="language-plaintext highlighter-rouge">baseUrl</code> to <code class="language-plaintext highlighter-rouge">bower_components</code> and set a path config for all your application code.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">requirejs</span><span class="p">.</span><span class="nx">config</span><span class="p">({</span>
+  <span class="na">baseUrl</span><span class="p">:</span> <span class="dl">'</span><span class="s1">bower_components/</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">paths</span><span class="p">:</span> <span class="p">{</span> <span class="c1">// path to your app</span>
+    <span class="na">app</span><span class="p">:</span> <span class="dl">'</span><span class="s1">../</span><span class="dl">'</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">requirejs</span><span class="p">(</span> <span class="p">[</span>
+  <span class="dl">'</span><span class="s1">imagesloaded/imagesloaded</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">app/my-component.js</span><span class="dl">'</span>
+<span class="p">],</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">imagesLoaded</span><span class="p">,</span> <span class="nx">myComp</span> <span class="p">)</span> <span class="p">{</span>
+  <span class="nx">imagesLoaded</span><span class="p">(</span> <span class="dl">'</span><span class="s1">#container</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="p">...</span> <span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<h2 id="browser-support">Browser support</h2>
+
+<ul>
+  <li>IE9+</li>
+  <li>Android 2.3+</li>
+  <li>iOS Safari 4+</li>
+  <li>All other modern browsers</li>
+</ul>
+
+<p>Use <a href="http://imagesloaded.desandro.com/v3/">imagesLoaded v3</a> for IE8 support.</p>
+
+<h2 id="mit-license">MIT License</h2>
+
+<p>imagesLoaded is released under the <a href="http://desandro.mit-license.org/">MIT License</a>. Have at it.</p>
+
+    </div>
+</div>
+    </section>
+  </main>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+I"�	<h2 id="the-emergence-of-combinatorial-structure-in-cultural-symbol-systems">The emergence of combinatorial structure in cultural symbol systems</h2>
+
+<p>The ability to learn and culturally transmit symbol systems is central to human intelligence.
+From phonemes in spoken words, to notes in a melody or the lines of a diagram, these systems rely on <b>combinatorial structure</b> (a finite set of building blocks that can be rearranged to compose new concepts). Some of the aspects enabling combinatorial behavior are shared with other animal species but humans put these abilities to unique uses, going far beyond the kinds of systems we see in non-human animals.</p>
+
+<p>How do combinatorial symbol systems emerge? To answer this question, I am developing computational models that enable us to characterize combinatorial structure, assess whether these systems are structured efficiently, and understand their evolutionary dynamics.</p>
+
+<p><img src="/assets/img/research1a.png" alt="" /></p>
+
+<!-- ![](/assets/img/research1b.png) -->
+
+<hr />
+
+<h2 id="active-learning-and-psychological-models-of-uncertainty-and-information-acquisition">Active learning and psychological models of uncertainty and information acquisition</h2>
+
+<p>Another theme of earlier, but still ongoing, work is is trying to understand how humans ask questions and gather information using formal methods from <a href="https://en.wikipedia.org/wiki/Bayesian_experimental_design">optimal experimental design and Bayesian statistics</a>. One of the tasks we use to study this is a probabilistic version of the popular code breaking game <a href="https://en.wikipedia.org/wiki/Mastermind_(board_game)">Mastermind</a>, where the subject must guess codes that are generated from distributions over a set of items.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Space of Entropy Functions</th>
+      <th style="text-align: center">“Fruit Bowl” Mastermind</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><img src="/assets/img/research2a.png" alt="" /></td>
+      <td style="text-align: center"><img src="/assets/img/research2b.png" alt="" /></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- <hr />
+
+## Realism and explanatory status of probabilistic models of cognition
+
+To what extent do computational-level theories, which often start with idealized assumptions about the computational capabilities of the human mind accurately describe human cognition? -->
+
+<p><br />
+<br />
+<br />
+<br />
+<br /></p>
+:ET

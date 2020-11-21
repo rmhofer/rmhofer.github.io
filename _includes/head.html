@@ -1,0 +1,22 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link href="https://fonts.googleapis.com/css?family=Merriweather:300|Raleway:400,700" rel="stylesheet">
+<link rel="stylesheet" href="{{ "/assets/css/style.css" | relative_url }}">
+<link rel="stylesheet" href="{{ "/assets/css/gallery.css" | relative_url }}">
+
+<!-- Photo gallery imports -->
+{% if page.support contains 'jquery' %}
+<script src="{{ "/assets/bower_components/jquery/dist/jquery.min.js" | relative_url }}" type="text/javascript" ></script>
+{% endif %}
+
+{% if page.support contains 'gallery' %}
+<script src="{{ "/assets/bower_components/lightgallery/dist/js/lightgallery-all.min.js" | relative_url }}"></script>
+<link rel="stylesheet" href="{{ "/assets/bower_components/lightgallery/dist/css/lightgallery.min.css" | relative_url }}" />
+<script src="{{ "/assets/bower_components/imagesloaded/imagesloaded.pkgd.min.js" | relative_url }}"></script>
+<script src="{{ "/assets/bower_components/masonry-layout/dist/masonry.pkgd.js" | relative_url }}"></script>
+<script src="{{ "/assets/bower_components/isotope-layout/dist/isotope.pkgd.min.js" | relative_url }}"></script>
+{% endif %}
+
+<title>{{ page.title | default: site.title }}</title>
+{% seo %}

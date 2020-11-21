@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link href="https://fonts.googleapis.com/css?family=Merriweather:300|Raleway:400,700" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="stylesheet" href="/assets/css/gallery.css">
+
+<!-- Photo gallery imports -->
+
+
+
+
+<title>Fizzy UI utils</title>
+<!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Fizzy UI utils | Matthias Hofer’s Website</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Fizzy UI utils" />
+<meta name="author" content="Matthias Hofer" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Personal website of Matthias Hofer, PhD candidate at MIT’s Brain and Cognitive Sciences Department." />
+<meta property="og:description" content="Personal website of Matthias Hofer, PhD candidate at MIT’s Brain and Cognitive Sciences Department." />
+<link rel="canonical" href="http://localhost:4000/assets/bower_components/fizzy-ui-utils/" />
+<meta property="og:url" content="http://localhost:4000/assets/bower_components/fizzy-ui-utils/" />
+<meta property="og:site_name" content="Matthias Hofer’s Website" />
+<script type="application/ld+json">
+{"url":"http://localhost:4000/assets/bower_components/fizzy-ui-utils/","author":{"@type":"Person","name":"Matthias Hofer"},"description":"Personal website of Matthias Hofer, PhD candidate at MIT’s Brain and Cognitive Sciences Department.","headline":"Fizzy UI utils","@type":"WebPage","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+</head>
+
+<body>
+  <main class="container">
+    <!-- side bar -->
+    <section class="about">
+      <!-- image -->
+      <a href="/">
+        
+        <img src="/assets/img/profile1.png" alt="Matthias Hofer" />
+        
+      </a>
+      <!-- name -->
+      <h2 id="title">
+        <a href="/">Matthias Hofer</a>
+      </h2>
+      <!-- tag -->
+      <p class="tagline">Cognitive Science, MIT</p>
+      <!-- navigation --><nav class="navigation">
+        <ul>
+          
+          <li>
+            <a href="/">Home</a>
+          </li>
+          
+          <li>
+            <a href="/research">Research</a>
+          </li>
+          
+          <li>
+            <a href="/publications">Publications</a>
+          </li>
+          
+          <li>
+            <a href="/photography">Miscellanea</a>
+          </li>
+          
+        </ul>
+      </nav><!-- social -->
+      <ul class="social"><a href="https://github.com/rmhofer" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a><a href="https://twitter.com/MatthiasRHofer" target="_blank">
+          <li>
+            <i class="icon-twitter-squared"></i>
+          </li>
+        </a></ul>
+      <!-- date -->
+      <p>&copy;
+        2020</p></section>
+    <!-- content -->
+    <section class="content">
+      <div class="post-container">
+    <div class="post">
+        <h1 id="fizzy-ui-utils">Fizzy UI utils</h1>
+
+<p>UI utility &amp; helper functions</p>
+
+<p>Used in <a href="http://flickity.metafizzy.co">Flickity</a>, <a href="http://isotope.metafizzy.co">Isotope</a>, <a href="http://masonry.desandro.com">Masonry</a>, <a href="http://draggabilly.desandro.com">Draggabilly</a></p>
+
+<h2 id="install">Install</h2>
+
+<p>Bower: <code class="language-plaintext highlighter-rouge">bower install fizzy-ui-utils --save</code></p>
+
+<p>npm: <code class="language-plaintext highlighter-rouge">npm install fizzy-ui-utils --save</code></p>
+
+<h2 id="api">API</h2>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// fizzyUIUtils is the browser global</span>
+<span class="kd">var</span> <span class="nx">utils</span> <span class="o">=</span> <span class="nx">fizzyUIUtils</span><span class="p">;</span>
+
+<span class="c1">// ---- ---- //</span>
+
+<span class="nx">utils</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span> <span class="nx">a</span><span class="p">,</span> <span class="nx">b</span> <span class="p">)</span>
+<span class="c1">// extend object</span>
+
+<span class="nx">utils</span><span class="p">.</span><span class="nx">modulo</span><span class="p">(</span> <span class="nx">num</span><span class="p">,</span> <span class="nx">div</span> <span class="p">)</span>
+<span class="c1">// num [modulo] div</span>
+
+<span class="nx">utils</span><span class="p">.</span><span class="nx">makeArray</span><span class="p">(</span> <span class="nx">obj</span> <span class="p">)</span>
+<span class="c1">// make array from object</span>
+
+<span class="nx">utils</span><span class="p">.</span><span class="nx">removeFrom</span><span class="p">(</span> <span class="nx">ary</span><span class="p">,</span> <span class="nx">obj</span> <span class="p">)</span>
+<span class="c1">// remove object from array</span>
+
+<span class="nx">utils</span><span class="p">.</span><span class="nx">getParent</span><span class="p">(</span> <span class="nx">elem</span><span class="p">,</span> <span class="nx">selector</span> <span class="p">)</span>
+<span class="c1">// get parent element of an element, given a selector string</span>
+
+<span class="nx">utils</span><span class="p">.</span><span class="nx">getQueryElement</span><span class="p">(</span> <span class="nx">elem</span> <span class="p">)</span>
+<span class="c1">// if elem is a string, use it as a selector and return element</span>
+
+<span class="nx">Class</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">handleEvent</span> <span class="o">=</span> <span class="nx">utils</span><span class="p">.</span><span class="nx">handleEvent</span><span class="p">;</span>
+<span class="c1">// enable Class.onclick when element.addEventListener( 'click', this, false )</span>
+
+<span class="nx">utils</span><span class="p">.</span><span class="nx">filterFindElements</span><span class="p">(</span> <span class="nx">elems</span><span class="p">,</span> <span class="nx">selector</span> <span class="p">)</span>
+<span class="c1">// iterate through elems, filter and find all elements that match selector</span>
+
+<span class="nx">utils</span><span class="p">.</span><span class="nx">debounceMethod</span><span class="p">(</span> <span class="nx">Class</span><span class="p">,</span> <span class="nx">methodName</span><span class="p">,</span> <span class="nx">threhold</span> <span class="p">)</span>
+<span class="c1">// debounce a class method</span>
+
+<span class="nx">utils</span><span class="p">.</span><span class="nx">docReady</span><span class="p">(</span> <span class="nx">callback</span> <span class="p">)</span>
+<span class="c1">// trigger callback on document ready</span>
+
+<span class="nx">utils</span><span class="p">.</span><span class="nx">toDashed</span><span class="p">(</span> <span class="nx">str</span> <span class="p">)</span>
+<span class="c1">// 'camelCaseString' -&gt; 'camel-case-string'</span>
+
+<span class="nx">utils</span><span class="p">.</span><span class="nx">htmlInit</span><span class="p">(</span> <span class="nx">Class</span><span class="p">,</span> <span class="nx">namespace</span> <span class="p">)</span>
+<span class="c1">// on document ready, initialize Class on every element</span>
+<span class="c1">// that matches js-namespace</span>
+<span class="c1">// pass in JSON options from element's data-options-namespace attribute</span>
+</code></pre></div></div>
+
+<hr />
+
+<p><a href="http://desandro.mit-license.org/">MIT license</a>. Have at it.</p>
+
+<p>By <a href="http://metafizzy.co">Metafizzy</a></p>
+
+    </div>
+</div>
+    </section>
+  </main>
+</body>
+
+</html>

@@ -1,0 +1,16 @@
+{
+  "name": "plainwhite-jekyll-master",
+  "authors": [
+    "Matthias Hofer <mhofer@mit.edu>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "dependencies": {
+    "jquery": "^3.5.1",
+    "lightgallery": "^1.10.0",
+    "isotope-layout": "isotope#^3.0.6",
+    "imagesloaded": "^4.1.4"
+  }
+}
