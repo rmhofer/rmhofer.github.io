@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link href="https://fonts.googleapis.com/css?family=Merriweather:300|Raleway:400,700" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="stylesheet" href="/assets/css/gallery.css">
+
+<!-- Photo gallery imports -->
+
+
+
+
+<title>Masonry</title>
+<!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Masonry | Matthias Hofer’s Website</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Masonry" />
+<meta name="author" content="Matthias Hofer" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Personal website of Matthias Hofer, PhD candidate at MIT’s Brain and Cognitive Sciences Department." />
+<meta property="og:description" content="Personal website of Matthias Hofer, PhD candidate at MIT’s Brain and Cognitive Sciences Department." />
+<meta property="og:site_name" content="Matthias Hofer’s Website" />
+<script type="application/ld+json">
+{"url":"/assets/bower_components/masonry-layout/","author":{"@type":"Person","name":"Matthias Hofer"},"description":"Personal website of Matthias Hofer, PhD candidate at MIT’s Brain and Cognitive Sciences Department.","headline":"Masonry","@type":"WebPage","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+</head>
+
+<body>
+  <main class="container">
+    <!-- side bar -->
+    <section class="about">
+      <!-- image -->
+      <a href="/">
+        
+        <img src="/assets/img/profile1.png" alt="Matthias Hofer" />
+        
+      </a>
+      <!-- name -->
+      <h2 id="title">
+        <a href="/">Matthias Hofer</a>
+      </h2>
+      <!-- tag -->
+      <p class="tagline">Cognitive Science, MIT</p>
+      <!-- navigation --><nav class="navigation">
+        <ul>
+          
+          <li>
+            <a href="/">Home</a>
+          </li>
+          
+          <li>
+            <a href="/research">Research</a>
+          </li>
+          
+          <li>
+            <a href="/publications">Publications</a>
+          </li>
+          
+          <li>
+            <a href="/photography">Miscellanea</a>
+          </li>
+          
+        </ul>
+      </nav><!-- social -->
+      <ul class="social"><a href="https://github.com/rmhofer" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a><a href="https://twitter.com/MatthiasRHofer" target="_blank">
+          <li>
+            <i class="icon-twitter-squared"></i>
+          </li>
+        </a></ul>
+      <!-- date -->
+      <p>&copy;
+        2022</p></section>
+    <!-- content -->
+    <section class="content">
+      <div class="post-container">
+    <div class="post">
+        <h1 id="masonry">Masonry</h1>
+
+<p><em>Cascading grid layout library</em></p>
+
+<p>Masonry works by placing elements in optimal position based on available vertical space, sort of like a mason fitting stones in a wall. You’ve probably seen it in use all over the Internet.</p>
+
+<p>See <a href="https://masonry.desandro.com">masonry.desandro.com</a> for complete docs and demos.</p>
+
+<h2 id="install">Install</h2>
+
+<h3 id="download">Download</h3>
+
+<ul>
+  <li><a href="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.js">masonry.pkgd.js</a> un-minified, or</li>
+  <li><a href="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js">masonry.pkgd.min.js</a> minified</li>
+</ul>
+
+<h3 id="cdn">CDN</h3>
+
+<p>Link directly to Masonry files on <a href="https://unpkg.com/">unpkg</a>.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="c">&lt;!-- or --&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<h3 id="package-managers">Package managers</h3>
+
+<p><a href="https://www.npmjs.com/package/masonry-layout">npm</a>: <code class="language-plaintext highlighter-rouge">npm install masonry-layout --save</code></p>
+
+<p>Bower: <code class="language-plaintext highlighter-rouge">bower install masonry-layout --save</code></p>
+
+<h2 id="support-masonry-development">Support Masonry development</h2>
+
+<p>Masonry has been actively maintained and improved upon for 8 years, with 900 GitHub issues closed. Please consider supporting its development by <a href="https://metafizzy.co">purchasing a license for one of Metafizzy’s commercial libraries</a>.</p>
+
+<h2 id="initialize">Initialize</h2>
+
+<p>With jQuery</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">.grid</span><span class="dl">'</span><span class="p">).</span><span class="nx">masonry</span><span class="p">({</span>
+  <span class="c1">// options...</span>
+  <span class="na">itemSelector</span><span class="p">:</span> <span class="dl">'</span><span class="s1">.grid-item</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">columnWidth</span><span class="p">:</span> <span class="mi">200</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>With vanilla JavaScript</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// vanilla JS</span>
+<span class="c1">// init with element</span>
+<span class="kd">var</span> <span class="nx">grid</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">.grid</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">msnry</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Masonry</span><span class="p">(</span> <span class="nx">grid</span><span class="p">,</span> <span class="p">{</span>
+  <span class="c1">// options...</span>
+  <span class="na">itemSelector</span><span class="p">:</span> <span class="dl">'</span><span class="s1">.grid-item</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">columnWidth</span><span class="p">:</span> <span class="mi">200</span>
+<span class="p">});</span>
+
+<span class="c1">// init with selector</span>
+<span class="kd">var</span> <span class="nx">msnry</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Masonry</span><span class="p">(</span> <span class="dl">'</span><span class="s1">.grid</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="c1">// options...</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>With HTML</p>
+
+<p>Add a <code class="language-plaintext highlighter-rouge">data-masonry</code> attribute to your element. Options can be set in JSON in the value.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"grid"</span> <span class="na">data-masonry=</span><span class="s">'{ "itemSelector": ".grid-item", "columnWidth": 200 }'</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"grid-item"</span><span class="nt">&gt;&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"grid-item"</span><span class="nt">&gt;&lt;/div&gt;</span>
+  ...
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<h2 id="license">License</h2>
+
+<p>Masonry is released under the <a href="http://desandro.mit-license.org">MIT license</a>. Have at it.</p>
+
+<hr />
+
+<p>Made by David DeSandro</p>
+
+    </div>
+</div>
+    </section>
+  </main>
+</body>
+
+</html>
