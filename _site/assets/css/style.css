@@ -1,0 +1,195 @@
+/* file: assets/css/style.css */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@300;400;700&display=swap');
+
+/* Reset some default styles for a clean slate */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #fafafa;
+    display: flex;
+    justify-content: center;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+    transition: color 0.3s;
+}
+
+.inactive-link, .inactive-link:hover {
+    color: #dbdbdb;
+}
+
+/* Hover effect for all links */
+a:hover {
+    color: #7eb47f;
+}
+
+.section {
+    margin-bottom: 55px;
+}
+
+.section a {
+    font-weight: bold;
+}
+
+.section p {
+    margin-bottom: 10px;
+}
+
+.section h4 {
+    margin-bottom: 20px;
+}
+
+.social-links {
+    width: 140px;
+    float: right;
+    margin-top: 20px;
+    padding-top: 10px;
+    border-top: 1px solid #dbdbdb;
+}
+
+.paper-icon {
+    color: #404040;
+    margin-left: 8px;
+}
+
+.social-icon {
+    color: #404040;
+    margin-left: 8px;
+}
+
+.news-list {
+    list-style-type: disc; /* or 'none' if you don't want any bullets */
+    padding-left: 20px; /* Adjusts padding to align with your content */
+    margin-left: 0; /* Adjust as needed */
+    /* Additional styling here if needed */
+}
+
+/* Wrapper for the entire layout */
+.wrapper {
+    position: relative; /* Needed for absolute positioning inside */
+    max-width: 700px; /* Maximum width of the content area */
+    margin-top: 100px;
+}
+
+.section {
+    padding-top: 100px; /* Same as your top margin */
+    margin-top: -100px; /* Negative margin to offset the position */
+}
+
+/* Fixed sidebar */
+.sidebar {
+    position: fixed;
+    left: calc(50% - 360px); /* Center minus half the max width */
+    width: 160px; /* Sidebar width */
+    height: 100vh; /* Full height */
+    text-align: right;
+    padding: 0 25px 0 0;
+}
+
+.sidebar ul {
+    list-style-type: none;
+}
+
+.sidebar ul li a {
+    padding: 8px 0;
+    display: block;
+}
+
+.sidebar .nametag a {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.44em;
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+.profile-pic {
+    width: 136px;
+    height: 136px;
+    border-radius: 5px;
+    display: block; /* To enable margin settings */
+    margin: 4px auto 15px;
+    border: 1px solid #686868;
+}
+
+/* Main content styling */
+.main-content {
+    margin-left: 20%; /* Sidebar width */
+    width: 80%; /* Remaining width */
+    padding: 0 25px 0 25px;
+    margin-bottom: 1000px;
+    line-height: 1.6;
+}
+
+.scrollable-content-header {
+    margin-top: 0px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300; 
+    font-size: 1.1em; 
+    margin-bottom: 10px; 
+    text-transform: uppercase;
+    border-bottom: 1px #dbdbdb solid;
+}
+
+.research-section {
+    background-color: #f3f3f3;
+    padding: 25px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.publication-list {
+    list-style-type: none; /* Removes bullets */
+    padding: 0;
+    margin: 0;
+}
+
+.publication-list .paper {
+    margin-bottom: 12px;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 800px) {
+    .sidebar {
+        position: relative;
+        left: 0;
+    }
+
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+        max-width: none;
+    }
+}
+
+/* Additional responsive breakpoint for smaller screens */
+@media (max-width: 768px) {
+    .sidebar {
+        padding: 20px; /* Adjust padding for smaller screens */
+    }
+
+    .main-content {
+        padding: 20px;
+    }
+}
+
+/* Smooth scrolling for anchor links */
+html {
+    scroll-behavior: smooth;
+}

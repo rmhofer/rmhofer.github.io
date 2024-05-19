@@ -1,0 +1,81 @@
+<!-- file: _layouts.default.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="sidebar"> <!-- page navigation -->
+            <img src="/assets/img/headshot.png" alt="Profile Picture" class="profile-pic">
+            <div class="nametag">
+                <a href="#about">Matthias R. Hofer</a>
+            </div>
+            <ul>
+                <li><a href="#news">News</a></li>
+                <li><a href="#papers">Papers</a></li>
+                <li><a href="#research">Research</a></li>
+                <!-- <li><a class="inactive-link" href="#teaching">Teaching</a></li> -->
+                <!-- <li><a href="#github">GitHub</a></li> -->
+                <!-- <li><a class="inactive-link" href="#misc">Misc</a></li> -->
+            </ul>
+            <!-- Social Links -->
+            <div class="social-links">
+                <a href="https://twitter.com/yourusername" class="social-icon" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://github.com/yourusername" class="social-icon" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="mailto:youremail@example.com" class="social-icon"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+        <div class="main-content">
+            <div class="section" id="research">
+    <h3 class="scrollable-content-header">Research</h3>
+    
+    <div class="research-section">
+        <h4>The emergence of combinatorial structure in cultural symbol systems</h4>
+
+        <p>The ability to learn and culturally transmit symbol systems is central to human intelligence. From phonemes in spoken words, to notes in a melody or the lines of a diagram, these systems rely on combinatorial structure (a finite set of building blocks that can be rearranged to compose new concepts). Some of the aspects enabling combinatorial behavior are shared with other animal species but humans put these abilities to unique uses, going far beyond the kinds of systems we see in non-human animals.
+        </p>
+
+        <p>How do combinatorial symbol systems emerge? To answer this question, I am developing computational models that enable us to characterize combinatorial structure, assess whether these systems are structured efficiently, and understand their evolutionary dynamics.
+        </p>
+    </div>
+    
+    <div class="research-section">
+        <h4>Active learning and psychological models of uncertainty and information acquisition</h4>
+
+        <p>Another theme of earlier, but still ongoing, work is is trying to understand how humans ask questions and gather information using formal methods from optimal experimental design and Bayesian statistics. One of the tasks we use to study this is a probabilistic version of the popular code breaking game Mastermind, where the subject must guess codes that are generated from distributions over a set of items.
+        </p>
+    </div>
+</div>
+ <!-- main page content -->
+        </div>
+    </div>
+    <script type="text/javascript">
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        (function() {
+        function decode() {
+            var parts = ['it.', 'r@m', 'u', 'mh', 'ed', 'ofe'];
+            var shuffled = [parts[3], parts[5], parts[1], parts[0], parts[4], parts[2]];
+            var someContent = shuffled.join('');
+            document.querySelector('.some_content').textContent = someContent;
+        }
+
+        // Decode and display
+        decode();
+        })();
+    </script>
+</body>
+
+</html>
