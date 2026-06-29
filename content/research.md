@@ -14,7 +14,7 @@
     <div class="research-section">
         <h4>Active learning and psychological models of uncertainty and information acquisition</h4>
 
-        <p>Another theme of earlier, but still ongoing, work is is trying to understand how humans ask questions and gather information using formal methods from optimal experimental design and Bayesian statistics. One of the tasks we use to study this is a probabilistic version of the popular code breaking game Mastermind, where the subject must guess codes that are generated from distributions over a set of items.
+        <p>Another theme of earlier, but still ongoing, work is trying to understand how humans ask questions and gather information using formal methods from optimal experimental design and Bayesian statistics. One of the tasks we use to study this is a probabilistic version of the popular code breaking game Mastermind, where the subject must guess codes that are generated from distributions over a set of items.
         </p>
     </div>
 </div>

@@ -1,0 +1,20 @@
+# Jekyll build output (GitHub Pages rebuilds this)
+_site/
+.jekyll-cache/
+.jekyll-metadata
+
+# Local Ruby toolchain (not needed by GitHub Pages)
+vendor/
+.bundle/
+
+# macOS
+.DS_Store
+
+# Python helper cache
+__pycache__/
+
+# Full-resolution source images — only the downscaled profile.jpg is published
+assets/img/2026.jpg
+assets/img/headshot.png
+assets/img/headshot2.jpg
+assets/img/headshot3.jpg

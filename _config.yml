@@ -51,3 +51,19 @@ url: "https://rmhofer.github.io" # the base hostname & protocol for your site, e
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+
+# Keep build/tooling and full-resolution source images out of the published site.
+# Only the downscaled assets/img/profile.jpg should ever be served.
+exclude:
+  - vendor/
+  - .bundle/
+  - Gemfile
+  - Gemfile.lock
+  - make_bib.py
+  - publications.bib
+  - __pycache__/
+  - README.md
+  - assets/img/2026.jpg
+  - assets/img/headshot.png
+  - assets/img/headshot2.jpg
+  - assets/img/headshot3.jpg
