@@ -13,8 +13,6 @@ body {
     line-height: 1.6;
     color: #333;
     background-color: #fafafa;
-    display: flex;
-    justify-content: center;
 }
 
 .bold {
@@ -77,11 +75,13 @@ a:hover {
     /* Additional styling here if needed */
 }
 
-/* Wrapper for the entire layout */
+/* Wrapper for the entire layout: a centered flex row (sidebar + content) */
 .wrapper {
-    position: relative; /* Needed for absolute positioning inside */
-    max-width: 700px; /* Maximum width of the content area */
-    margin-top: 100px;
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    max-width: 880px; /* Sidebar (160) + content; centered on the page */
+    margin: 100px auto 0;
 }
 
 .section {
@@ -89,12 +89,13 @@ a:hover {
     margin-top: -100px; /* Negative margin to offset the position */
 }
 
-/* Fixed sidebar */
+/* Sidebar sticks alongside the content while scrolling */
 .sidebar {
-    position: fixed;
-    left: calc(50% - 360px); /* Center minus half the max width */
+    position: sticky;
+    top: 40px;
     width: 160px; /* Sidebar width */
-    height: 100vh; /* Full height */
+    flex-shrink: 0; /* Never collapse into the main content */
+    align-self: flex-start;
     text-align: right;
     padding: 0 25px 0 0;
 }
@@ -126,10 +127,10 @@ a:hover {
 
 /* Main content styling */
 .main-content {
-    margin-left: 20%; /* Sidebar width */
-    width: 80%; /* Remaining width */
+    flex: 1;
+    min-width: 0; /* Allow long words/links to wrap instead of forcing overflow */
     padding: 0 25px 0 25px;
-    margin-bottom: 1000px;
+    margin-bottom: 400px;
     line-height: 1.6;
 }
 
@@ -157,7 +158,15 @@ a:hover {
 }
 
 .publication-list .paper {
-    margin-bottom: 12px;
+    margin-bottom: 14px;
+}
+
+.publication-list .venue {
+    color: #777;
+}
+
+.publication-list .year {
+    color: #777;
 }
 
 .underline {
@@ -166,24 +175,16 @@ a:hover {
 
 
 
-/* Tablet and smaller desktop screens */
-@media (max-width: 1024px) {
-    .sidebar {
-        left: calc(50% - 300px); /* Adjust for smaller screens */
-    }
-}
-
-/* Small tablets and large smartphones */
+/* Small tablets and large smartphones: stack the sidebar on top */
 @media (max-width: 768px) {
     .wrapper {
+        flex-direction: column;
         margin-top: 50px;
     }
 
     .sidebar {
-        position: relative;
-        left: 0;
+        position: static;
         width: 100%;
-        height: auto;
         text-align: center;
         padding: 10px 0;
     }
@@ -203,8 +204,6 @@ a:hover {
     }
 
     .main-content {
-        margin-left: 0;
-        width: 100%;
         padding: 0 15px;
         margin-bottom: 50px;
     }

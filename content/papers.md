@@ -11,10 +11,14 @@
   {% for paper in sorted_papers %}
     <li class="paper">
       <strong>{{ paper.title }}</strong>.
-      <span class="authors">{{ paper.authors }}</span>  
-      <span>({{ paper.year }})</span>
-      <span>{{ paper.details }}</span>
-      <a href="{{ paper.link }}" class="paper-icon" target="_blank"><i class="fas fa-file-alt"></i></a>
+      <span class="authors">{{ paper.authors }}</span>
+      <span class="year">({{ paper.year }})</span>
+      <span class="venue">{{ paper.details }}</span>
+      {% if paper.link %}{% assign lk = paper.link | downcase %}{% if lk contains '.pdf' or lk contains '/pdf' %}
+      <a href="{{ paper.link }}" class="paper-icon" target="_blank" title="PDF" aria-label="PDF"><i class="fas fa-file-pdf"></i></a>
+      {% else %}
+      <a href="{{ paper.link }}" class="paper-icon" target="_blank" title="View paper" aria-label="View paper"><i class="fas fa-up-right-from-square"></i></a>
+      {% endif %}{% endif %}
     </li>
   {% endfor %}
 </ul>
