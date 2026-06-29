@@ -5,6 +5,17 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Apply saved theme/font before paint to avoid a flash -->
+    <script>
+        (function () {
+            try {
+                var t = localStorage.getItem('theme');
+                if (!t) { t = (window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light'; }
+                document.documentElement.setAttribute('data-theme', t);
+                document.documentElement.setAttribute('data-fonts', localStorage.getItem('fonts') || 'default');
+            } catch (e) {}
+        })();
+    </script>
     <title>{{ page.title | default: site.title }} &middot; {{ site.title }}</title>
     <meta name="description" content="{{ site.description | strip_newlines }}">
     <meta name="author" content="Matthias Hofer">
@@ -51,6 +62,17 @@
             {{ content }} <!-- main page content -->
         </div>
     </div>
+
+    <footer class="site-footer">
+        <div class="site-footer-inner">
+            <span class="footer-note">&copy; {{ site.time | date: "%Y" }} Matthias Hofer</span>
+            <div class="footer-toggles">
+                <button id="font-toggle" class="footer-btn" type="button" aria-label="Switch font set" title="Switch fonts"><i class="fas fa-font"></i></button>
+                <button id="theme-toggle" class="footer-btn" type="button" aria-label="Toggle dark mode" title="Toggle dark mode"><i class="fas fa-moon"></i></button>
+            </div>
+        </div>
+    </footer>
+
     <script type="text/javascript">
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -74,6 +96,34 @@
 
         // Decode and display
         decode();
+        })();
+
+        // Theme + font toggles (footer)
+        (function () {
+            var root = document.documentElement;
+            var themeBtn = document.getElementById('theme-toggle');
+            var fontBtn = document.getElementById('font-toggle');
+
+            function paintThemeIcon() {
+                var dark = root.getAttribute('data-theme') === 'dark';
+                themeBtn.innerHTML = dark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+                themeBtn.title = dark ? 'Switch to light mode' : 'Switch to dark mode';
+            }
+
+            themeBtn.addEventListener('click', function () {
+                var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+                root.setAttribute('data-theme', next);
+                try { localStorage.setItem('theme', next); } catch (e) {}
+                paintThemeIcon();
+            });
+
+            fontBtn.addEventListener('click', function () {
+                var next = root.getAttribute('data-fonts') === 'alt' ? 'default' : 'alt';
+                root.setAttribute('data-fonts', next);
+                try { localStorage.setItem('fonts', next); } catch (e) {}
+            });
+
+            paintThemeIcon();
         })();
     </script>
 </body>

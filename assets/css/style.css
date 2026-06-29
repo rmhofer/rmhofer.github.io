@@ -1,5 +1,46 @@
 /* file: assets/css/style.css */
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@300;400;700&family=Source+Sans+3:wght@400;600;700&family=Space+Grotesk:wght@400;500;700&display=swap');
+
+/* ---- Theme + font tokens ---- */
+:root {
+    /* fonts (default set) */
+    --display-font: 'Montserrat', sans-serif;
+    --body-font: 'Lato', sans-serif;
+
+    /* light theme colors */
+    --bg: #fafafa;
+    --text: #333;
+    --muted: #777;
+    --faint: #dbdbdb;
+    --border: #dbdbdb;
+    --accent: #7eb47f;
+    --panel: #f3f3f3;
+    --icon: #404040;
+    --pic-border: #686868;
+    --footer-bg: #2c2c2c;   /* darker band in light mode */
+    --footer-text: #f0f0f0;
+}
+
+/* alternate font set (Space Grotesk + Source Sans 3) */
+:root[data-fonts="alt"] {
+    --display-font: 'Space Grotesk', sans-serif;
+    --body-font: 'Source Sans 3', sans-serif;
+}
+
+/* dark theme colors */
+:root[data-theme="dark"] {
+    --bg: #16171a;
+    --text: #e6e6e6;
+    --muted: #9a9a9a;
+    --faint: #444;
+    --border: #34363b;
+    --accent: #8fc490;
+    --panel: #212327;
+    --icon: #cfcfcf;
+    --pic-border: #555;
+    --footer-bg: #e8e8e8;   /* lighter band in dark mode */
+    --footer-text: #222;
+}
 
 /* Reset some default styles for a clean slate */
 * {
@@ -9,10 +50,11 @@
 }
 
 body {
-    font-family: 'Lato', sans-serif;
+    font-family: var(--body-font);
     line-height: 1.6;
-    color: #333;
-    background-color: #fafafa;
+    color: var(--text);
+    background-color: var(--bg);
+    transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 .bold {
@@ -21,17 +63,17 @@ body {
 
 a {
     text-decoration: none;
-    color: #333;
+    color: var(--text);
     transition: color 0.3s;
 }
 
 .inactive-link, .inactive-link:hover {
-    color: #dbdbdb;
+    color: var(--faint);
 }
 
 /* Hover effect for all links */
 a:hover {
-    color: #7eb47f;
+    color: var(--accent);
 }
 
 .section {
@@ -55,16 +97,16 @@ a:hover {
     float: right;
     margin-top: 20px;
     padding-top: 10px;
-    border-top: 1px solid #dbdbdb;
+    border-top: 1px solid var(--border);
 }
 
 .paper-icon {
-    color: #404040;
+    color: var(--icon);
     margin-left: 8px;
 }
 
 .social-icon {
-    color: #404040;
+    color: var(--icon);
     margin-left: 8px;
 }
 
@@ -80,7 +122,7 @@ a:hover {
     position: relative;
     display: flex;
     align-items: flex-start;
-    max-width: 700px; /* Sidebar (160) + content; centered on the page */
+    max-width: 750px; /* Sidebar (160) + content; centered on the page */
     margin: 100px auto 0;
 }
 
@@ -110,7 +152,7 @@ a:hover {
 }
 
 .sidebar .nametag a {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--display-font);
     font-size: 1.44em;
     font-weight: 700;
     line-height: 1.5;
@@ -122,7 +164,7 @@ a:hover {
     border-radius: 5px;
     display: block; /* To enable margin settings */
     margin: 4px auto 15px;
-    border: 1px solid #686868;
+    border: 1px solid var(--pic-border);
 }
 
 /* Main content styling */
@@ -130,26 +172,26 @@ a:hover {
     flex: 1;
     min-width: 0; /* Allow long words/links to wrap instead of forcing overflow */
     padding: 0 25px 0 25px;
-    margin-bottom: 400px;
+    margin-bottom: 160px;
     line-height: 1.6;
 }
 
 .scrollable-content-header {
     margin-top: 0px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 300; 
-    font-size: 1.1em; 
-    margin-bottom: 10px; 
+    font-family: var(--display-font);
+    font-weight: 300;
+    font-size: 1.1em;
+    margin-bottom: 10px;
     text-transform: uppercase;
-    border-bottom: 1px #dbdbdb solid;
+    border-bottom: 1px var(--border) solid;
 }
 
 .research-section {
-    background-color: #f3f3f3;
+    background-color: var(--panel);
     padding: 25px;
     margin-bottom: 20px;
     border-radius: 5px;
-    border-left: 4px solid #dcdcdc; /* color set per-section to match its research area */
+    border-left: 3px solid var(--border); /* color set per-section to match its research area */
 }
 
 .publication-list {
@@ -163,11 +205,11 @@ a:hover {
 }
 
 .publication-list .venue {
-    color: #777;
+    color: var(--muted);
 }
 
 .publication-list .year {
-    color: #777;
+    color: var(--muted);
 }
 
 /* Research-area markers */
@@ -194,7 +236,7 @@ a:hover {
     gap: 6px 16px;
     margin: 4px 0 20px;
     font-size: 0.82em;
-    color: #666;
+    color: var(--muted);
 }
 
 .area-legend-item {
@@ -207,7 +249,49 @@ a:hover {
     text-decoration: underline;
 }
 
+/* ---- Footer bar with theme + font toggles ---- */
+.site-footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    width: 100%;
+    padding: 16px 25px;
+    transition: background-color 0.25s ease, color 0.25s ease;
+}
 
+.site-footer-inner {
+    max-width: 750px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-note {
+    font-size: 0.85em;
+    opacity: 0.85;
+}
+
+.footer-toggles {
+    display: flex;
+    gap: 4px;
+}
+
+.footer-btn {
+    background: none;
+    border: none;
+    color: inherit;
+    font-size: 1em;
+    line-height: 1;
+    cursor: pointer;
+    padding: 8px 10px;
+    border-radius: 6px;
+    transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.footer-btn:hover {
+    color: var(--accent);
+    background-color: rgba(127, 127, 127, 0.18);
+}
 
 /* Small tablets and large smartphones: stack the sidebar on top */
 @media (max-width: 768px) {
