@@ -80,7 +80,7 @@ a:hover {
     position: relative;
     display: flex;
     align-items: flex-start;
-    max-width: 880px; /* Sidebar (160) + content; centered on the page */
+    max-width: 700px; /* Sidebar (160) + content; centered on the page */
     margin: 100px auto 0;
 }
 
