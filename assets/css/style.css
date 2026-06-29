@@ -4,8 +4,8 @@
 /* ---- Theme + font tokens ---- */
 :root {
     /* fonts (default set) */
-    --display-font: 'Montserrat', sans-serif;
-    --body-font: 'Lato', sans-serif;
+    --display-font: 'Space Grotesk', sans-serif;
+    --body-font: 'Source Sans 3', sans-serif;
 
     /* light theme colors */
     --bg: #fafafa;
@@ -21,10 +21,10 @@
     --footer-text: #f0f0f0;
 }
 
-/* alternate font set (Space Grotesk + Source Sans 3) */
+/* alternate font set (the original Montserrat + Lato) */
 :root[data-fonts="alt"] {
-    --display-font: 'Space Grotesk', sans-serif;
-    --body-font: 'Source Sans 3', sans-serif;
+    --display-font: 'Montserrat', sans-serif;
+    --body-font: 'Lato', sans-serif;
 }
 
 /* dark theme colors */
@@ -269,6 +269,10 @@ a:hover {
 .footer-note {
     font-size: 0.85em;
     opacity: 0.85;
+}
+
+.footer-updated {
+    opacity: 0.6;
 }
 
 .footer-toggles {

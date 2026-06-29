@@ -65,7 +65,7 @@
 
     <footer class="site-footer">
         <div class="site-footer-inner">
-            <span class="footer-note">&copy; {{ site.time | date: "%Y" }} Matthias Hofer</span>
+            <span class="footer-note">&copy; {{ site.time | date: "%Y" }} Matthias Hofer<span class="footer-updated"> &middot; updated {{ site.time | date: "%B %Y" }}</span></span>
             <div class="footer-toggles">
                 <button id="font-toggle" class="footer-btn" type="button" aria-label="Switch font set" title="Switch fonts"><i class="fas fa-font"></i></button>
                 <button id="theme-toggle" class="footer-btn" type="button" aria-label="Toggle dark mode" title="Toggle dark mode"><i class="fas fa-moon"></i></button>
@@ -89,7 +89,8 @@
             var parts = ['it.', 'r@m', 'u', 'mh', 'ed', 'ofe'];
             var shuffled = [parts[3], parts[5], parts[1], parts[0], parts[4], parts[2]];
             var someContent = shuffled.join('');
-            document.querySelector('.some_content').textContent = someContent;
+            var slot = document.querySelector('.some_content');
+            if (slot) { slot.textContent = someContent; }
             var mail = document.querySelector('.social-icon[aria-label="Email"]');
             if (mail) { mail.setAttribute('href', 'mailto:' + someContent); }
         }

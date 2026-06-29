@@ -10,16 +10,5 @@
 
     <p>During my PhD I co-founded and co-organized the <a href="https://sites.google.com/view/mit-bcs-philosophy/home" target="_blank">MIT BCS Philosophy Circle</a>. Besides research, I am passionate about language learning, travel and photography, and you can occasionally find me in the ceramics studio or making electronic music.
     </p>
-    
-    <div>
-        <span class="bold">
-            <span>E</span><!--
-            --><span>m</span><!--
-            --><span>a</span><!--
-            --><span>i</span><!--
-            --><span>l</span>:
-        </span>
-        <span class="some_content"></span>
-    </div>
 
 </div>

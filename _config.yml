@@ -57,6 +57,7 @@ url: "https://rmhofer.github.io" # the base hostname & protocol for your site, e
 exclude:
   - vendor/
   - .bundle/
+  - fonts-preview.html   # kept in the repo, but not published (font toggle lives in the footer now)
   - Gemfile
   - Gemfile.lock
   - make_bib.py
