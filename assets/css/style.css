@@ -149,6 +149,7 @@ a:hover {
     padding: 25px;
     margin-bottom: 20px;
     border-radius: 5px;
+    border-left: 4px solid #dcdcdc; /* color set per-section to match its research area */
 }
 
 .publication-list {
