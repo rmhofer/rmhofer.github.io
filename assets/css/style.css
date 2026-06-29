@@ -169,6 +169,39 @@ a:hover {
     color: #777;
 }
 
+/* Research-area markers */
+.area-dot {
+    display: inline-block;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.paper-areas {
+    margin-left: 6px;
+    white-space: nowrap;
+}
+
+.paper-areas .area-dot {
+    margin-left: 3px;
+}
+
+.area-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+    margin: 4px 0 20px;
+    font-size: 0.82em;
+    color: #666;
+}
+
+.area-legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
 .underline {
     text-decoration: underline;
 }

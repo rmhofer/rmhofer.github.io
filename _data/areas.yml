@@ -1,0 +1,17 @@
+# Research areas shown as colored markers next to publications.
+# `key` is referenced by each paper's `tags:` list in papers.yml.
+- key: evolution
+  label: Language evolution & combinatorial structure
+  color: "#7eb47f"
+- key: communication
+  label: Communication, meaning & pragmatics
+  color: "#6f93b0"
+- key: modeling
+  label: Computational & neuro-symbolic modeling
+  color: "#9a7aa0"
+- key: search
+  label: Information search & uncertainty
+  color: "#c08a6a"
+- key: learning
+  label: Word & category learning
+  color: "#bfa75a"

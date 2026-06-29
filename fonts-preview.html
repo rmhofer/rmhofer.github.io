@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Font preview &middot; Matthias Hofer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Lato:wght@400;700&family=Montserrat:wght@300;400;700&family=Newsreader:opsz,wght@6..72,400;6..72,500&family=Space+Grotesk:wght@400;500;700&family=Spectral:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root { --accent: #7eb47f; --muted: #777; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #fafafa; color: #333; padding: 40px 20px 80px; }
+    .intro { max-width: 760px; margin: 0 auto 36px; font-family: 'Lato', sans-serif; }
+    .intro h1 { font-size: 1.4em; margin-bottom: 8px; }
+    .intro p { color: var(--muted); line-height: 1.6; }
+    .grid { max-width: 760px; margin: 0 auto; display: grid; gap: 26px; }
+    .card { background: #fff; border: 1px solid #e6e6e6; border-radius: 10px; padding: 28px 30px; }
+    .tag { display: inline-block; font-family: 'Lato', sans-serif; font-size: 0.72em; letter-spacing: 0.08em;
+           text-transform: uppercase; color: #fff; background: var(--accent); padding: 3px 9px; border-radius: 20px; margin-bottom: 18px; }
+    .tag .stack { color: #2c3e2d; font-weight: 700; }
+    .name { font-size: 1.7em; line-height: 1.25; }
+    .nav { margin: 10px 0 20px; color: var(--muted); }
+    .nav span { margin-right: 16px; }
+    .header { text-transform: uppercase; font-size: 1.05em; letter-spacing: 0.04em;
+              border-bottom: 1px solid #dbdbdb; padding-bottom: 6px; margin-bottom: 12px; }
+    .body { line-height: 1.7; margin-bottom: 16px; }
+    .paper { line-height: 1.6; }
+    .paper .authors { color: var(--muted); }
+    .paper .me { text-decoration: underline; }
+    .dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: var(--accent); vertical-align: middle; margin-left: 4px; }
+
+    /* --- Current: Lato + Montserrat --- */
+    .f-current .name, .f-current .header { font-family: 'Montserrat', sans-serif; font-weight: 700; }
+    .f-current .header { font-weight: 300; }
+    .f-current .body, .f-current .nav, .f-current .paper { font-family: 'Lato', sans-serif; }
+
+    /* --- A: Fraunces + Newsreader --- */
+    .f-a .name { font-family: 'Fraunces', serif; font-weight: 600; font-optical-sizing: auto; }
+    .f-a .header { font-family: 'Fraunces', serif; font-weight: 600; }
+    .f-a .body, .f-a .nav, .f-a .paper { font-family: 'Newsreader', serif; font-size: 1.08em; }
+
+    /* --- B: EB Garamond --- */
+    .f-b .name { font-family: 'EB Garamond', serif; font-weight: 600; }
+    .f-b .header { font-family: 'EB Garamond', serif; font-weight: 600; font-variant: small-caps; letter-spacing: 0.02em; text-transform: none; }
+    .f-b .body, .f-b .nav, .f-b .paper { font-family: 'EB Garamond', serif; font-size: 1.15em; }
+
+    /* --- C: Space Grotesk + Spectral --- */
+    .f-c .name { font-family: 'Space Grotesk', sans-serif; font-weight: 700; }
+    .f-c .header { font-family: 'Space Grotesk', sans-serif; font-weight: 500; }
+    .f-c .body, .f-c .nav, .f-c .paper { font-family: 'Spectral', serif; font-weight: 400; }
+  </style>
+</head>
+<body>
+  <div class="intro">
+    <h1>Font preview</h1>
+    <p>Four typographic directions applied to your actual content. Compare the feel of your name, the
+       section headers, and body text. Tell me a letter (or mix-and-match) and I'll apply it to the live site.
+       This page is hidden from search engines and I'll remove it once you've decided.</p>
+  </div>
+
+  <div class="grid">
+    <!-- Repeated sample for each option -->
+    <div class="card f-current">
+      <span class="tag">Current &middot; Lato + Montserrat</span>
+      <div class="name">Matthias R. Hofer</div>
+      <div class="nav"><span>News</span><span>Papers</span><span>Research</span></div>
+      <div class="header">Research</div>
+      <p class="body">My primary research focus is human communication. I am particularly fascinated by how
+        communication systems, such as language, develop and evolve over time, and how they interact with the
+        diverse cognitive, social, and cultural aspects that define the human experience.</p>
+      <p class="paper"><strong>Simplicity and Informativeness in the Evolution of Combinatorial Structure</strong>.
+        <span class="authors"><span class="me">M Hofer</span>, S Kirby, RP Levy</span> (2023)<span class="dot"></span></p>
+    </div>
+
+    <div class="card f-a">
+      <span class="tag">A &middot; Fraunces + Newsreader</span>
+      <div class="name">Matthias R. Hofer</div>
+      <div class="nav"><span>News</span><span>Papers</span><span>Research</span></div>
+      <div class="header">Research</div>
+      <p class="body">My primary research focus is human communication. I am particularly fascinated by how
+        communication systems, such as language, develop and evolve over time, and how they interact with the
+        diverse cognitive, social, and cultural aspects that define the human experience.</p>
+      <p class="paper"><strong>Simplicity and Informativeness in the Evolution of Combinatorial Structure</strong>.
+        <span class="authors"><span class="me">M Hofer</span>, S Kirby, RP Levy</span> (2023)<span class="dot"></span></p>
+    </div>
+
+    <div class="card f-b">
+      <span class="tag">B &middot; EB Garamond</span>
+      <div class="name">Matthias R. Hofer</div>
+      <div class="nav"><span>News</span><span>Papers</span><span>Research</span></div>
+      <div class="header">Research</div>
+      <p class="body">My primary research focus is human communication. I am particularly fascinated by how
+        communication systems, such as language, develop and evolve over time, and how they interact with the
+        diverse cognitive, social, and cultural aspects that define the human experience.</p>
+      <p class="paper"><strong>Simplicity and Informativeness in the Evolution of Combinatorial Structure</strong>.
+        <span class="authors"><span class="me">M Hofer</span>, S Kirby, RP Levy</span> (2023)<span class="dot"></span></p>
+    </div>
+
+    <div class="card f-c">
+      <span class="tag">C &middot; Space Grotesk + Spectral</span>
+      <div class="name">Matthias R. Hofer</div>
+      <div class="nav"><span>News</span><span>Papers</span><span>Research</span></div>
+      <div class="header">Research</div>
+      <p class="body">My primary research focus is human communication. I am particularly fascinated by how
+        communication systems, such as language, develop and evolve over time, and how they interact with the
+        diverse cognitive, social, and cultural aspects that define the human experience.</p>
+      <p class="paper"><strong>Simplicity and Informativeness in the Evolution of Combinatorial Structure</strong>.
+        <span class="authors"><span class="me">M Hofer</span>, S Kirby, RP Levy</span> (2023)<span class="dot"></span></p>
+    </div>
+  </div>
+</body>
+</html>

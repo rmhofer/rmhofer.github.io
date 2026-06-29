@@ -5,6 +5,12 @@
 (A more up-to-date list can be found on <a href="https://scholar.google.com/citations?hl=en&pli=1&user=9L864oYAAAAJ" target="_blank">Google Scholar</a>.)
 </div>
 
+<div class="area-legend">
+  {% for area in site.data.areas %}
+  <span class="area-legend-item"><span class="area-dot" style="background: {{ area.color }};"></span>{{ area.label }}</span>
+  {% endfor %}
+</div>
+
 {% assign sorted_papers = site.data.papers | sort: 'year' | reverse %}
 
 <ul class="publication-list">
@@ -19,6 +25,7 @@
       {% else %}
       <a href="{{ paper.link }}" class="paper-icon" target="_blank" title="View paper" aria-label="View paper"><i class="fas fa-up-right-from-square"></i></a>
       {% endif %}{% endif %}
+      {% if paper.tags %}<span class="paper-areas">{% for t in paper.tags %}{% assign area = site.data.areas | where: "key", t | first %}{% if area %}<span class="area-dot" style="background: {{ area.color }};" title="{{ area.label }}"></span>{% endif %}{% endfor %}</span>{% endif %}
     </li>
   {% endfor %}
 </ul>
