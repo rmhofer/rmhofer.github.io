@@ -181,6 +181,9 @@ a:hover {
 /* Pan/zoom driven by CSS variables; defaults reproduce the original fit.
    Tune via the photo tool at /admin/ and paste the values here. */
 .profile-pic {
+    --pic-x: -1.1%;
+    --pic-y: -4.4%;
+    --pic-zoom: 1.21;
     width: 100%;
     height: 100%;
     object-fit: cover;
