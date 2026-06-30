@@ -161,10 +161,9 @@ a:hover {
 
 .sidebar .nametag a {
     font-family: var(--display-font);
-    font-size: 1.08em;          /* small enough to fit "Matthias R. Hofer" on one line */
+    font-size: 1.2em;           /* "Matthias Hofer" fits one line at this larger size */
     font-weight: 700;
     line-height: 1.35;
-    letter-spacing: -0.025em;   /* tightened into a compact wordmark */
     white-space: nowrap;        /* never wrap to a second line */
     display: block;
 }
