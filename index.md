@@ -11,4 +11,6 @@ title: Home
 
 {% include_relative content/research.md %}
 
+{% include_relative content/code.md %}
+
 <!-- Repeat for other sections -->

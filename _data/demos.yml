@@ -1,8 +1,0 @@
-# Code & Demos entries. Each entry needs a title + description, and any of:
-#   demo: <url>   -> shows a ▶ "live demo" icon
-#   repo: <url>   -> shows a GitHub icon
-#   link: <url>   -> shows a generic external-link icon
-# Add as many as you like; newest first reads well.
-- title: "Placeholder: my GitHub"
-  description: "Replace this with a real demo or project. (This entry just points to your GitHub profile so the layout is visible.)"
-  repo: https://github.com/rmhofer

@@ -35,18 +35,17 @@
 </head>
 
 <body>
-    {% assign home = false %}{% if page.url == '/' %}{% assign home = true %}{% endif %}
     <div class="wrapper">
         <div class="sidebar"> <!-- page navigation -->
             <img src="/assets/img/profile.jpg" alt="Matthias Hofer" class="profile-pic">
             <div class="nametag">
-                <a href="{% unless home %}/{% endunless %}#about">Matthias R. Hofer</a>
+                <a href="#about">Matthias R. Hofer</a>
             </div>
             <ul>
-                <li><a href="{% unless home %}/{% endunless %}#news">News</a></li>
-                <li><a href="{% unless home %}/{% endunless %}#papers">Papers</a></li>
-                <li><a href="{% unless home %}/{% endunless %}#research">Research</a></li>
-                <li><a href="/code/"{% if page.url == '/code/' %} class="active" aria-current="page"{% endif %}>Code &amp; Demos</a></li>
+                <li><a href="#news">News</a></li>
+                <li><a href="#papers">Papers</a></li>
+                <li><a href="#research">Research</a></li>
+                <li><a href="#code">Code &amp; Demos</a></li>
             </ul>
             <!-- Social Links -->
             <div class="social-links">
