@@ -9,9 +9,8 @@
     <script>
         (function () {
             try {
-                var t = localStorage.getItem('theme');
-                if (!t) { t = (window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light'; }
-                document.documentElement.setAttribute('data-theme', t);
+                // Default to light; only use dark if the visitor previously chose it.
+                document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'light');
                 document.documentElement.setAttribute('data-fonts', localStorage.getItem('fonts') || 'default');
             } catch (e) {}
         })();
