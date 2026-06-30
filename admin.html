@@ -1,0 +1,203 @@
+---
+permalink: /admin/
+sitemap: false
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Admin · Matthias Hofer</title>
+  <style>
+    :root { --accent: #7eb47f; --bg: #fafafa; --panel: #fff; --border: #e2e2e2; --text: #333; --muted: #777; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; padding: 40px 20px 80px; }
+    .wrap { max-width: 720px; margin: 0 auto; }
+    h1 { font-size: 1.5em; margin-bottom: 4px; }
+    .sub { color: var(--muted); font-size: 0.9em; margin-bottom: 28px; }
+    .card { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 22px 24px; margin-bottom: 22px; }
+    .card h2 { font-size: 1.1em; margin-bottom: 6px; }
+    .card .hint { color: var(--muted); font-size: 0.85em; margin-bottom: 16px; }
+    label { display: block; font-size: 0.85em; color: var(--muted); margin: 12px 0 4px; }
+    input[type=password], input[type=text] { width: 100%; padding: 9px 11px; border: 1px solid #ccc; border-radius: 6px; font-size: 1em; background: #fff; }
+    input[type=range] { width: 100%; }
+    button { background: var(--accent); color: #fff; border: none; border-radius: 6px; padding: 9px 16px; font-size: 0.95em; cursor: pointer; transition: filter .15s; }
+    button:hover { filter: brightness(0.95); }
+    button.secondary { background: #eee; color: #333; }
+    .row { display: flex; gap: 24px; align-items: flex-start; flex-wrap: wrap; }
+    .editor-frame { width: 240px; height: 240px; border-radius: 5px; overflow: hidden; border: 1px solid #888; touch-action: none; cursor: grab; flex-shrink: 0; background: #ddd; }
+    .editor-frame:active { cursor: grabbing; }
+    .editor-frame img { width: 100%; height: 100%; object-fit: cover; display: block; user-select: none; -webkit-user-drag: none; }
+    .preview-real { width: 136px; height: 136px; border-radius: 5px; overflow: hidden; border: 1px solid #686868; }
+    .preview-real img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .preview-label { font-size: 0.78em; color: var(--muted); margin-top: 6px; text-align: center; }
+    pre { background: #1e1f22; color: #e6e6e6; padding: 14px; border-radius: 8px; font-size: 0.85em; overflow-x: auto; margin-top: 14px; white-space: pre; }
+    .err { color: #c0392b; font-size: 0.85em; margin-top: 8px; min-height: 1em; }
+    .ok { color: var(--accent); font-size: 0.85em; margin-top: 8px; min-height: 1em; }
+    #gate { position: fixed; inset: 0; background: var(--bg); display: flex; align-items: center; justify-content: center; z-index: 50; }
+    #gate .box { width: 320px; max-width: 90vw; background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 26px; text-align: center; }
+    #gate h2 { font-size: 1.1em; margin-bottom: 14px; }
+    #app { display: none; }
+    .controls { flex: 1; min-width: 220px; }
+    code.inline { background: #eee; padding: 1px 5px; border-radius: 4px; font-size: 0.9em; }
+  </style>
+</head>
+<body>
+
+  <!-- Password gate (cosmetic only — this is a static site) -->
+  <div id="gate">
+    <div class="box">
+      <h2>🔒 Admin</h2>
+      <input type="password" id="pw" placeholder="Password" autocomplete="off">
+      <div style="margin-top:12px;"><button id="unlock">Unlock</button></div>
+      <div class="err" id="gate-err"></div>
+    </div>
+  </div>
+
+  <div id="app">
+    <div class="wrap">
+      <h1>Admin console</h1>
+      <p class="sub">Personal tweak tools. Changes here generate values you commit to the repo (this is a static site, so nothing here writes to the live page by itself).</p>
+
+      <!-- Tool 1: profile picture fit -->
+      <div class="card">
+        <h2>Profile picture fit</h2>
+        <p class="hint">Drag to pan, use the slider to zoom. The small square shows the real on-site size. Copy the CSS and paste it into <code class="inline">assets/css/style.css</code> (replacing the <code class="inline">.profile-pic { … }</code> rule), or just send it to Claude.</p>
+        <div class="row">
+          <div>
+            <div class="editor-frame" id="frame">
+              <img src="/assets/img/profile.jpg" alt="profile" id="img" draggable="false">
+            </div>
+            <div class="preview-label">editor (drag me)</div>
+          </div>
+          <div class="controls">
+            <div style="display:flex; gap:18px; align-items:flex-start;">
+              <div>
+                <div class="preview-real"><img src="/assets/img/profile.jpg" alt="preview" id="preview"></div>
+                <div class="preview-label">actual size</div>
+              </div>
+              <div style="flex:1;">
+                <label for="zoom">Zoom: <span id="zoomval">1.00×</span></label>
+                <input type="range" id="zoom" min="1" max="3" step="0.01" value="1">
+                <div style="margin-top:14px; display:flex; gap:8px;">
+                  <button id="reset" class="secondary">Reset</button>
+                  <button id="copy">Copy CSS</button>
+                </div>
+                <div class="ok" id="copy-ok"></div>
+              </div>
+            </div>
+            <pre id="out"></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tool 2: change password -->
+      <div class="card">
+        <h2>Change admin password</h2>
+        <p class="hint">Type a new password to get its hash, then replace the <code class="inline">STORED_HASH</code> value near the top of <code class="inline">admin.html</code> and commit. (The plain password is never stored.)</p>
+        <label for="newpw">New password</label>
+        <input type="text" id="newpw" placeholder="type a new password">
+        <div style="margin-top:12px;"><button id="hashbtn">Generate hash</button></div>
+        <pre id="hashout" style="display:none;"></pre>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ===== CHANGE PASSWORD HERE =====
+    // This is the SHA-256 hash of the password. Default password: "slide-whistle".
+    // Use the "Change admin password" tool below to generate a new hash, then paste it here.
+    var STORED_HASH = "aecf126fcfe83126282421390598fce49d988161fa959ec5b0365019f5a234fb";
+    // =================================
+
+    async function sha256(text) {
+      var buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
+      return Array.from(new Uint8Array(buf)).map(function (b) { return b.toString(16).padStart(2, '0'); }).join('');
+    }
+
+    // ---- Password gate ----
+    var gate = document.getElementById('gate');
+    var app = document.getElementById('app');
+    function reveal() { gate.style.display = 'none'; app.style.display = 'block'; initTool(); }
+    if (sessionStorage.getItem('admin-ok') === '1') { reveal(); }
+
+    async function tryUnlock() {
+      var entered = document.getElementById('pw').value;
+      var h = await sha256(entered);
+      if (h === STORED_HASH) {
+        sessionStorage.setItem('admin-ok', '1');
+        reveal();
+      } else {
+        document.getElementById('gate-err').textContent = 'Wrong password.';
+      }
+    }
+    document.getElementById('unlock').addEventListener('click', tryUnlock);
+    document.getElementById('pw').addEventListener('keydown', function (e) { if (e.key === 'Enter') tryUnlock(); });
+
+    // ---- Password hash helper ----
+    document.getElementById('hashbtn').addEventListener('click', async function () {
+      var v = document.getElementById('newpw').value;
+      if (!v) return;
+      var h = await sha256(v);
+      var el = document.getElementById('hashout');
+      el.style.display = 'block';
+      el.textContent = 'var STORED_HASH = "' + h + '";';
+    });
+
+    // ---- Profile picture tool ----
+    function initTool() {
+      var FRAME = 240;                 // editor frame size (px); output is resolution-independent
+      var img = document.getElementById('img');
+      var preview = document.getElementById('preview');
+      var zoom = document.getElementById('zoom');
+      var zoomval = document.getElementById('zoomval');
+      var out = document.getElementById('out');
+      var x = 0, y = 0, z = 1;         // x,y in % of image; z = scale
+
+      function clampVal(v, m) { return Math.max(-m, Math.min(m, v)); }
+
+      function apply() {
+        var max = (z - 1) / 2 * 100;   // keep image covering the frame (no empty edges)
+        x = clampVal(x, max);
+        y = clampVal(y, max);
+        var t = 'translate(' + x.toFixed(1) + '%, ' + y.toFixed(1) + '%) scale(' + z.toFixed(2) + ')';
+        img.style.transform = t;
+        preview.style.transform = t;
+        zoomval.textContent = z.toFixed(2) + '×';
+        out.textContent =
+          '.profile-pic {\n' +
+          '    --pic-x: ' + x.toFixed(1) + '%;\n' +
+          '    --pic-y: ' + y.toFixed(1) + '%;\n' +
+          '    --pic-zoom: ' + z.toFixed(2) + ';\n' +
+          '}';
+      }
+
+      zoom.addEventListener('input', function () { z = parseFloat(zoom.value); apply(); });
+
+      var dragging = false, lastX = 0, lastY = 0;
+      var frame = document.getElementById('frame');
+      frame.addEventListener('pointerdown', function (e) { dragging = true; lastX = e.clientX; lastY = e.clientY; frame.setPointerCapture(e.pointerId); });
+      frame.addEventListener('pointermove', function (e) {
+        if (!dragging) return;
+        x += (e.clientX - lastX) / FRAME * 100;
+        y += (e.clientY - lastY) / FRAME * 100;
+        lastX = e.clientX; lastY = e.clientY;
+        apply();
+      });
+      frame.addEventListener('pointerup', function () { dragging = false; });
+      frame.addEventListener('pointercancel', function () { dragging = false; });
+
+      document.getElementById('reset').addEventListener('click', function () { x = 0; y = 0; z = 1; zoom.value = 1; apply(); });
+      document.getElementById('copy').addEventListener('click', function () {
+        navigator.clipboard.writeText(out.textContent).then(function () {
+          document.getElementById('copy-ok').textContent = 'Copied!';
+          setTimeout(function () { document.getElementById('copy-ok').textContent = ''; }, 1500);
+        });
+      });
+
+      apply();
+    }
+  </script>
+</body>
+</html>
