@@ -111,9 +111,62 @@ sitemap: false
     var STORED_HASH = "aecf126fcfe83126282421390598fce49d988161fa959ec5b0365019f5a234fb";
     // =================================
 
-    async function sha256(text) {
-      var buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
-      return Array.from(new Uint8Array(buf)).map(function (b) { return b.toString(16).padStart(2, '0'); }).join('');
+    // Self-contained SHA-256 (works without Web Crypto / over plain HTTP). ASCII passwords.
+    function sha256(ascii) {
+      function rightRotate(value, amount) { return (value >>> amount) | (value << (32 - amount)); }
+      var mathPow = Math.pow, maxWord = mathPow(2, 32), result = '', words = [];
+      var asciiBitLength = ascii.length * 8;
+      var hash = sha256.h = sha256.h || [];
+      var k = sha256.k = sha256.k || [];
+      var primeCounter = k.length;
+      var isComposite = {};
+      for (var candidate = 2; primeCounter < 64; candidate++) {
+        if (!isComposite[candidate]) {
+          for (var i = 0; i < 313; i += candidate) { isComposite[i] = candidate; }
+          hash[primeCounter] = (mathPow(candidate, .5) * maxWord) | 0;
+          k[primeCounter++] = (mathPow(candidate, 1 / 3) * maxWord) | 0;
+        }
+      }
+      ascii += '\x80';
+      while (ascii.length % 64 - 56) ascii += '\x00';
+      for (var i = 0; i < ascii.length; i++) {
+        var j = ascii.charCodeAt(i);
+        if (j >> 8) return;
+        words[i >> 2] |= j << ((3 - i) % 4) * 8;
+      }
+      words[words.length] = ((asciiBitLength / maxWord) | 0);
+      words[words.length] = (asciiBitLength);
+      for (var j = 0; j < words.length;) {
+        var w = words.slice(j, j += 16);
+        var oldHash = hash;
+        hash = hash.slice(0, 8);
+        for (var i = 0; i < 64; i++) {
+          var w15 = w[i - 15], w2 = w[i - 2];
+          var a = hash[0], e = hash[4];
+          var temp1 = hash[7]
+            + (rightRotate(e, 6) ^ rightRotate(e, 11) ^ rightRotate(e, 25))
+            + ((e & hash[5]) ^ ((~e) & hash[6]))
+            + k[i]
+            + (w[i] = (i < 16) ? w[i] : (
+                w[i - 16]
+                + (rightRotate(w15, 7) ^ rightRotate(w15, 18) ^ (w15 >>> 3))
+                + w[i - 7]
+                + (rightRotate(w2, 17) ^ rightRotate(w2, 19) ^ (w2 >>> 10))
+              ) | 0);
+          var temp2 = (rightRotate(a, 2) ^ rightRotate(a, 13) ^ rightRotate(a, 22))
+            + ((a & hash[1]) ^ (a & hash[2]) ^ (hash[1] & hash[2]));
+          hash = [(temp1 + temp2) | 0].concat(hash);
+          hash[4] = (hash[4] + temp1) | 0;
+        }
+        for (var i = 0; i < 8; i++) { hash[i] = (hash[i] + oldHash[i]) | 0; }
+      }
+      for (var i = 0; i < 8; i++) {
+        for (var j = 3; j + 1; j--) {
+          var b = (hash[i] >> (j * 8)) & 255;
+          result += ((b < 16) ? 0 : '') + b.toString(16);
+        }
+      }
+      return result;
     }
 
     // ---- Password gate ----
@@ -122,9 +175,9 @@ sitemap: false
     function reveal() { gate.style.display = 'none'; app.style.display = 'block'; initTool(); }
     if (sessionStorage.getItem('admin-ok') === '1') { reveal(); }
 
-    async function tryUnlock() {
+    function tryUnlock() {
       var entered = document.getElementById('pw').value;
-      var h = await sha256(entered);
+      var h = sha256(entered);
       if (h === STORED_HASH) {
         sessionStorage.setItem('admin-ok', '1');
         reveal();
@@ -136,10 +189,10 @@ sitemap: false
     document.getElementById('pw').addEventListener('keydown', function (e) { if (e.key === 'Enter') tryUnlock(); });
 
     // ---- Password hash helper ----
-    document.getElementById('hashbtn').addEventListener('click', async function () {
+    document.getElementById('hashbtn').addEventListener('click', function () {
       var v = document.getElementById('newpw').value;
       if (!v) return;
-      var h = await sha256(v);
+      var h = sha256(v);
       var el = document.getElementById('hashout');
       el.style.display = 'block';
       el.textContent = 'var STORED_HASH = "' + h + '";';
