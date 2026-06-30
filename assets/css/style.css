@@ -151,6 +151,10 @@ a:hover {
     display: block;
 }
 
+.sidebar ul li a.active {
+    color: var(--accent);
+}
+
 .sidebar .nametag a {
     font-family: var(--display-font);
     font-size: 1.44em;
