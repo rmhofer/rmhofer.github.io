@@ -26,7 +26,10 @@ sitemap: false
     button:hover { filter: brightness(0.95); }
     button.secondary { background: #eee; color: #333; }
     .row { display: flex; gap: 24px; align-items: flex-start; flex-wrap: wrap; }
-    .editor-frame { width: 240px; height: 240px; border-radius: 5px; overflow: hidden; border: 1px solid #888; touch-action: none; cursor: grab; flex-shrink: 0; background: #ddd; }
+    .editor-frame { position: relative; width: 240px; height: 240px; border-radius: 5px; overflow: hidden; border: 1px solid #888; touch-action: none; cursor: grab; flex-shrink: 0; background: #ddd; }
+    .guides { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+    .guides.hidden { display: none; }
+    .guides-toggle { display: inline-flex; align-items: center; gap: 6px; font-size: 0.8em; color: var(--muted); margin-top: 6px; cursor: pointer; }
     .editor-frame:active { cursor: grabbing; }
     .editor-frame img { width: 100%; height: 100%; object-fit: cover; display: block; user-select: none; -webkit-user-drag: none; }
     .preview-real { width: 136px; height: 136px; border-radius: 5px; overflow: hidden; border: 1px solid #686868; }
@@ -68,8 +71,27 @@ sitemap: false
           <div>
             <div class="editor-frame" id="frame">
               <img src="/assets/img/profile.jpg" alt="profile" id="img" draggable="false">
+              <svg class="guides" id="guides" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+                <!-- rule-of-thirds grid -->
+                <g stroke="#ffffff" stroke-opacity="0.55" stroke-width="0.5">
+                  <line x1="33.33" y1="0" x2="33.33" y2="100"/>
+                  <line x1="66.66" y1="0" x2="66.66" y2="100"/>
+                  <line x1="0" y1="33.33" x2="100" y2="33.33"/>
+                  <line x1="0" y1="66.66" x2="100" y2="66.66"/>
+                </g>
+                <!-- center line -->
+                <line x1="50" y1="0" x2="50" y2="100" stroke="#ffffff" stroke-opacity="0.3" stroke-width="0.4"/>
+                <!-- ideal head oval (top-of-hair to chin ≈ 60% of height, centered) -->
+                <ellipse cx="50" cy="41" rx="18" ry="28" fill="none" stroke="#7eb47f" stroke-width="0.9" stroke-dasharray="3 2"/>
+                <!-- eyes guideline on the upper third -->
+                <line x1="0" y1="37" x2="100" y2="37" stroke="#7eb47f" stroke-width="0.9" stroke-dasharray="3 2"/>
+                <text x="51" y="35.4" fill="#7eb47f" font-size="3.4" font-family="sans-serif">eyes</text>
+                <!-- shoulders hint -->
+                <path d="M12 100 C 28 80, 72 80, 88 100" fill="none" stroke="#ffffff" stroke-opacity="0.5" stroke-width="0.6" stroke-dasharray="3 2"/>
+              </svg>
             </div>
             <div class="preview-label">editor (drag me)</div>
+            <label class="guides-toggle"><input type="checkbox" id="guides-toggle" checked> show alignment guides</label>
           </div>
           <div class="controls">
             <div style="display:flex; gap:18px; align-items:flex-start;">
@@ -227,6 +249,10 @@ sitemap: false
       }
 
       zoom.addEventListener('input', function () { z = parseFloat(zoom.value); apply(); });
+
+      document.getElementById('guides-toggle').addEventListener('change', function (e) {
+        document.getElementById('guides').classList.toggle('hidden', !e.target.checked);
+      });
 
       var dragging = false, lastX = 0, lastY = 0;
       var frame = document.getElementById('frame');
